@@ -2,6 +2,7 @@ package com.rent.sprite;
 
 import java.sql.Timestamp;
 import java.util.Arrays;
+import java.util.UUID;
 
 public class RentList {
 
@@ -22,25 +23,8 @@ public class RentList {
 	String imgpath;
 	
 	String imgname;
-
-	public RentList(String rentType, String location, String bhk, String title, long price, String description,
-			Timestamp created_at, String imgpath, String imgname) {
-		super();
-		this.rentType = rentType;
-		this.location = location;
-		this.bhk = bhk;
-		this.title = title;
-		this.price = price;
-		this.description = description;
-		this.created_at = created_at;
-		this.imgpath = imgpath;
-		this.imgname = imgname;
-	}
-
-	public RentList() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
+	UUID rent_id;
 
 	public String getRentType() {
 		return rentType;
@@ -114,14 +98,41 @@ public class RentList {
 		this.imgname = imgname;
 	}
 
+	public UUID getRent_id() {
+		return rent_id;
+	}
+
+	public void setRent_id(UUID rent_id) {
+		this.rent_id = rent_id;
+	}
+
+	public RentList() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public RentList(String rentType, String location, String bhk, String title, long price, String description,
+			Timestamp created_at, String imgpath, String imgname, UUID rent_id) {
+		super();
+		this.rentType = rentType;
+		this.location = location;
+		this.bhk = bhk;
+		this.title = title;
+		this.price = price;
+		this.description = description;
+		this.created_at = created_at;
+		this.imgpath = imgpath;
+		this.imgname = imgname;
+		this.rent_id = rent_id;
+	}
+
 	@Override
 	public String toString() {
 		return "RentList [rentType=" + rentType + ", location=" + location + ", bhk=" + bhk + ", title=" + title
 				+ ", price=" + price + ", description=" + description + ", created_at=" + created_at + ", imgpath="
-				+ imgpath + ", imgname=" + imgname + "]";
+				+ imgpath + ", imgname=" + imgname + ", rent_id=" + rent_id + "]";
 	}
 
-	
 	
 
 }

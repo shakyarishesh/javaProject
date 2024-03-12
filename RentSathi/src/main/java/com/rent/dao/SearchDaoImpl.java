@@ -55,7 +55,8 @@ public class SearchDaoImpl implements SearchDao {
 				rr.setCreated_at(r1.get(qRent.createdAt));
 				rr.setRentType(r1.get(qRent.rentType));
 				rr.setLocation(r1.get(qRent.location));
-			
+				rr.setRent_id(r1.get(qRent.id));
+				
 				//converting image byte[] datatype into base64 String
 				String base64image = Base64.getEncoder().encodeToString(r1.get(qRent.imagePath));
 				rr.setImgpath(base64image);
@@ -100,6 +101,7 @@ public class SearchDaoImpl implements SearchDao {
 				rr.setCreated_at(r1.get(qRent.createdAt));
 				rr.setRentType(r1.get(qRent.rentType));
 				rr.setLocation(r1.get(qRent.location));
+				rr.setRent_id(r1.get(qRent.id));
 			
 				//converting image byte[] datatype into base64 String
 				String base64image = Base64.getEncoder().encodeToString(r1.get(qRent.imagePath));
@@ -145,7 +147,8 @@ public class SearchDaoImpl implements SearchDao {
 				rr.setCreated_at(r1.get(qRent.createdAt));
 				rr.setRentType(r1.get(qRent.rentType));
 				rr.setLocation(r1.get(qRent.location));
-			
+				rr.setRent_id(r1.get(qRent.id));
+				
 				//converting image byte[] datatype into base64 String
 				String base64image = Base64.getEncoder().encodeToString(r1.get(qRent.imagePath));
 				rr.setImgpath(base64image);
@@ -190,7 +193,8 @@ public class SearchDaoImpl implements SearchDao {
 				rr.setCreated_at(r1.get(qRent.createdAt));
 				rr.setRentType(r1.get(qRent.rentType));
 				rr.setLocation(r1.get(qRent.location));
-			
+				rr.setRent_id(r1.get(qRent.id));
+				
 				//converting image byte[] datatype into base64 String
 				String base64image = Base64.getEncoder().encodeToString(r1.get(qRent.imagePath));
 				rr.setImgpath(base64image);
@@ -235,7 +239,8 @@ public class SearchDaoImpl implements SearchDao {
 				rr.setPrice(r1.get(qRent.price));
 				rr.setCreated_at(r1.get(qRent.createdAt));
 				rr.setRentType(r1.get(qRent.rentType));
-			
+				rr.setRent_id(r1.get(qRent.id));
+				
 				//converting image byte[] datatype into base64 String
 				String base64image = Base64.getEncoder().encodeToString(r1.get(qRent.imagePath));
 				rr.setImgpath(base64image);
