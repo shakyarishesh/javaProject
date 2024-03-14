@@ -30,7 +30,7 @@ public class Rent {
 	@Column(name="rent_type")
 	private String rentType;
 	
-	@Column(name="bhk")
+	@Column(name="Property Specification")
 	private String bhk;
 	
 	@Column(name="title")
