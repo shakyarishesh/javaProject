@@ -38,12 +38,6 @@ public class Booking {
 	private String comment;
 	
 	private String rentType;
-	
-	private Date checkin;
-	
-	private Date checkout;
-	
-	private int duration;
 
 	private Timestamp createdAt;
 
@@ -111,30 +105,6 @@ public class Booking {
 		this.rentType = rentType;
 	}
 
-	public Date getCheckin() {
-		return checkin;
-	}
-
-	public void setCheckin(Date checkin) {
-		this.checkin = checkin;
-	}
-
-	public Date getCheckout() {
-		return checkout;
-	}
-
-	public void setCheckout(Date checkout) {
-		this.checkout = checkout;
-	}
-
-	public int getDuration() {
-		return duration;
-	}
-
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
-
 	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
@@ -146,11 +116,10 @@ public class Booking {
 	@Override
 	public String toString() {
 		return "Booking [id=" + id + ", user=" + user + ", rent=" + rent + ", name=" + name + ", email=" + email
-				+ ", mobileno=" + mobileno + ", comment=" + comment + ", rentType=" + rentType + ", checkin=" + checkin
-				+ ", checkout=" + checkout + ", duration=" + duration + ", createdAt=" + createdAt + "]";
+				+ ", mobileno=" + mobileno + ", comment=" + comment + ", rentType=" + rentType + ", createdAt="
+				+ createdAt + "]";
 	}
 
-	
 	
 
 }

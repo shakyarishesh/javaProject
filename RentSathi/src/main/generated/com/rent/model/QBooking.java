@@ -22,15 +22,9 @@ public class QBooking extends EntityPathBase<Booking> {
 
     public static final QBooking booking = new QBooking("booking");
 
-    public final DateTimePath<java.util.Date> checkin = createDateTime("checkin", java.util.Date.class);
-
-    public final DateTimePath<java.util.Date> checkout = createDateTime("checkout", java.util.Date.class);
-
     public final StringPath comment = createString("comment");
 
     public final DateTimePath<java.sql.Timestamp> createdAt = createDateTime("createdAt", java.sql.Timestamp.class);
-
-    public final NumberPath<Integer> duration = createNumber("duration", Integer.class);
 
     public final StringPath email = createString("email");
 

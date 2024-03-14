@@ -14,17 +14,17 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.mysql.cj.Session;
 import com.rent.dao.RegisterDao;
-import com.rent.dao.UploadDao;
+import com.rent.dao.RentDao;
 import com.rent.dao.UserDao;
-import com.rent.service.UploadService;
-import com.rent.sprite.UploadTable;
+import com.rent.service.RentService;
+import com.rent.sprite.RentTable;
 
 @Controller
 @RequestMapping("/upload")
 public class UploadController {
 
 	@Autowired
-	UploadService uploadService;
+	RentService rentService;
 	
 	@Autowired
 	RegisterDao registerDao;
@@ -33,10 +33,10 @@ public class UploadController {
 	UserDao userDao;
 	
 	@Autowired
-	UploadDao uploadDao;
+	RentDao rentDao;
 	
 	@RequestMapping(path="/add", method = RequestMethod.POST)
-	public String Upload(@RequestParam("img") CommonsMultipartFile image, HttpServletRequest request, @ModelAttribute("upload") UploadTable uploadTable)
+	public String Upload(@RequestParam("img") CommonsMultipartFile image, HttpServletRequest request, @ModelAttribute("upload") RentTable rentTable)
 	{
 		System.out.println("---------------------------------");
 		System.out.println(image.getOriginalFilename());
@@ -45,7 +45,7 @@ public class UploadController {
 		System.out.println(img_byte);
 		
 		
-		System.out.println(uploadTable.getBhk());
+		System.out.println(rentTable.getBhk());
 		
 		String userEmail = (String) request.getSession().getAttribute("login");
 		System.out.println("userEmail: "+userEmail);
@@ -54,7 +54,7 @@ public class UploadController {
 		System.out.println("user id:"+userId);
 		
 		System.out.println("---------------------------------");
-		uploadService.setUpload(uploadTable, userId, image.getOriginalFilename(), img_byte);
+		rentService.setUpload(rentTable, userId, image.getOriginalFilename(), img_byte);
 		
 		
 		//gives path of the image folder after the project has been run, not the one on the project.

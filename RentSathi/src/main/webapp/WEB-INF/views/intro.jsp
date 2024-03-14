@@ -105,6 +105,7 @@
 						${rentDetail.price }<span>/per Month</span>
 					</h2>
 					<a href="${pageContext.request.contextPath}/book/rentNow/${rentDetail.rent_id}" class="btn">Rent Now</a>
+				 	<p>${pageContext.request.contextPath}</p>
 				</div>
 			</c:forEach>
 			<h2>${error }</h2>

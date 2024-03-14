@@ -8,33 +8,32 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.rent.model.Rent;
+import com.rent.model.Booking;
 
 @Repository
-public class UploadDaoImpl implements UploadDao{
+public class BookingDaoImpl implements BookingDao {
 
 	@Resource
 	private EntityManagerFactory emf;
-	JPAQueryFactory query ;
+	JPAQueryFactory query;
 	private static final Logger logger = Logger.getLogger(RegisterDaoImpl.class);
-	
+
 	@Override
-	public Boolean addUpload(Rent rent) {
+	public Boolean setBookingDetails(Booking booking) {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		try {
-			em.persist(rent);
+			em.persist(booking);
 			em.getTransaction().commit();
-			logger.info("Rent details added");
+			logger.info("User details added");
 			return true;
 		} catch (Exception e) {
-			logger.error("error to insert rent Details " + e.getMessage());
+			logger.error("error to insert User Details " + e.getMessage());
 		} finally {
 			em.close();
 		}
+
 		return false;
 	}
-
-	
 
 }

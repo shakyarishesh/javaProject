@@ -50,17 +50,17 @@ public class RegistrationController {
 		model.addAttribute("user", user);
 		String em = request.getParameter("email");
 		String pw = request.getParameter("password");
-		System.out.println("em: " + em);
-		System.out.println("pw: " + pw);
+//		System.out.println("em: " + em);
+//		System.out.println("pw: " + pw);
 
 		String email = registerDao.getEmail(em);
 		String password = registerDao.getPassword(pw);
 
-		System.out.println("email:" + email);
-		System.out.println("pw:" + password);
+//		System.out.println("email:" + email);
+//		System.out.println("pw:" + password);
 		
 		UUID regId = registerDao.getIdByEmail(em);
-		System.out.println("id:" + regId);
+		//System.out.println("id:" + regId);
 
 		if (email != null && password != null) {
 			request.getSession().setAttribute("login", user.getEmail());
@@ -113,7 +113,7 @@ public class RegistrationController {
 		}
 		
 
-		return "intro";
+		return "redirect:/intro";
 
 	}
 

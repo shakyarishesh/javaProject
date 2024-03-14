@@ -1,6 +1,6 @@
 package com.rent.sprite;
 
-public class UploadTable {
+public class RentTable {
 
 	private String rentType;
 	

@@ -4,29 +4,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rent.controller.CommonController;
-import com.rent.dao.UploadDao;
+import com.rent.dao.RentDao;
 import com.rent.dao.UserDao;
 import com.rent.model.Rent;
-import com.rent.sprite.UploadTable;
+import com.rent.sprite.RentTable;
 
 @Service
-public class UploadServiceImpl implements UploadService {
+public class RentServiceImpl implements RentService {
 
 	@Autowired
-	UploadDao uploadDao;
+	RentDao rentDao;
 
 	@Autowired
 	UserDao userDao;
 
 	@Override
-	public Boolean setUpload(UploadTable uploadTable, Integer userId, String img_name, byte[] img_path) {
+	public Boolean setUpload(RentTable rentTable, Integer userId, String img_name, byte[] img_path) {
 		Rent rent = new Rent();
 
-		rent.setBhk(uploadTable.getBhk());
-		rent.setDescription(uploadTable.getDescription());
-		rent.setPrice(uploadTable.getPrice());
-		rent.setRentType(uploadTable.getRentType());
-		rent.setTitle(uploadTable.getTitle());
+		rent.setBhk(rentTable.getBhk());
+		rent.setDescription(rentTable.getDescription());
+		rent.setPrice(rentTable.getPrice());
+		rent.setRentType(rentTable.getRentType());
+		rent.setTitle(rentTable.getTitle());
 		rent.setCreatedAt(CommonController.getCurrentDateTime());
 		rent.setUpdatedAt(CommonController.getCurrentDateTime());
 		rent.setDeletedAt(null);
@@ -34,9 +34,9 @@ public class UploadServiceImpl implements UploadService {
 		rent.setUpdatedBy(userDao.getUser(userId));
 		rent.setImageName(img_name);
 		rent.setImagePath(img_path);
-		rent.setLocation(uploadTable.getLocation());
+		rent.setLocation(rentTable.getLocation());
 
-		return uploadDao.addUpload(rent);
+		return rentDao.addUpload(rent);
 
 	}
 
