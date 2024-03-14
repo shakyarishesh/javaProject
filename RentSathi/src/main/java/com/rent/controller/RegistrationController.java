@@ -58,14 +58,16 @@ public class RegistrationController {
 
 //		System.out.println("email:" + email);
 //		System.out.println("pw:" + password);
-		
+
 		UUID regId = registerDao.getIdByEmail(em);
-		//System.out.println("id:" + regId);
+		// System.out.println("id:" + regId);
 
 		if (email != null && password != null) {
 			request.getSession().setAttribute("login", user.getEmail());
-			request.getSession().setAttribute("userpw", user.getPassword());
+			// request.getSession().setAttribute("userpw", user.getPassword());
 			User us = userDao.getExistingUser(user.getEmail());
+			// here if there is already an user then it redirects to intro exle it add the
+			// registered user in to user table.
 			if (us != null) {
 				return "redirect:/intro";
 			} else {
@@ -77,6 +79,7 @@ public class RegistrationController {
 			return "login";
 		}
 
+		//LOgin for admin (static data)
 //		  if (user.getEmail().equalsIgnoreCase("admin@gmail.com") &&
 //		  user.getPassword().equalsIgnoreCase("admin")) {
 //		  request.getSession().setAttribute("login", user.getEmail());
@@ -102,16 +105,13 @@ public class RegistrationController {
 		}
 		String pw = request.getParameter("password");
 		String confirm_pw = request.getParameter("confirmpassword");
-		
-		if(pw.equals(confirm_pw))
-		{
+
+		if (pw.equals(confirm_pw)) {
 			registerService.addRegisterDetails(regTable);
-		}else
-		{
-			model.addAttribute("error","passwords didn't matched");
+		} else {
+			model.addAttribute("error", "passwords didn't matched");
 			return "register";
 		}
-		
 
 		return "redirect:/intro";
 
@@ -120,7 +120,7 @@ public class RegistrationController {
 	@RequestMapping(value = "/logout")
 	public String logout(HttpServletRequest request) {
 		request.getSession().invalidate();
-		return "intro";
+		return "redirect:/intro";
 	}
 
 	@RequestMapping(value = "/profile")

@@ -16,7 +16,7 @@ String login = (String) session.getAttribute("login");
 <body>
 	<header>
 		<a href="#" class="logo"><img
-			src="<c:url value="/resources/Images/larana, inc..png"/>" alt=""></a>
+			src="<c:url value="/resources/Images/logo3.jpg"/>" alt=""></a>
 		<div class="bx bx-menu" id="menu-icon"></div>
 		<ul class="navbar">
 			<li><a href="${pageContext.request.contextPath}/intro">Home</a></li>

@@ -92,8 +92,8 @@
 								placeholder="Permanent or Temporary" required>
 						</div>
 						<div class="input-field">
-							<label>Nationality</label> <input type="text" name="nationality"
-								placeholder="Enter nationality" required>
+							<label>City</label> <input type="text" name="nationality"
+								placeholder="Enter your city" required>
 						</div>
 						<div class="input-field">
 							<label>Province</label> <input type="text" name="province"
