@@ -35,3 +35,19 @@ march 6
 
 march 7
 - make "rent now" work -> create an table for eg named-> booking -> view page(form)->controller(modelattribute)->service(set)->Dao(persist)
+
+
+rent table - include status
+table for booking
+-PERSON ->NAME->CONTACTNO -> IDENTIFICATION DOC(CARD CITIZENSHIP,...) ->EMAIL -> MESSAGE(COMMENT BOX)
+
+
+march 8
+created booking table
+
+march 12(left)
+added login credential for renting the flat/room/house.
+
+march 13 
+booking api->added booking details into booking table.
+

@@ -21,16 +21,20 @@ String login = (String) session.getAttribute("login");
 			<label for="Image" class="section">Image: </label> <input type="file"
 				name="img" class="form-control" /> <label for="rentType"
 				class="section">Rent Type:</label> <select id="rentType"
-				name="rentType">
+				name="rentType" onchange="changeRentType()">
 				<option value="house">house</option>
 				<option value="flat">flat</option>
 				<option value="room">room</option>
-				<!-- <option value="Room with Kitchen">Room with Kitche</option>
+			</select>
+			<!-- <option value="Room with Kitchen">Room with Kitche</option>
           <option value="1BHK">1BHK</option>
           <option value="2BHK">2BHK</option> -->
-			</select> <label for="Location" class="section">Location:</label> <input
-				type="text" id="location" name="location"> <label for="bhk"
-				class="section">BHK: </label> <input type="text" id="bhk" name="bhk">
+			<label for="Location" class="section">Location:</label> <input
+				type="text" id="location" name="location">
+			<div id="bhkField">
+				<!-- BHK field will be added dynamically here based on selection -->
+			</div>
+
 
 			<label for="title" class="section">Title:</label> <input type="text"
 				id="title" name="title"> <label for="price" class="section">Price:
@@ -41,6 +45,68 @@ String login = (String) session.getAttribute("login");
 			<input type="submit" class="uploadbox" value="Upload" />
 		</form>
 	</div>
+
+
+	<script>
+		function changeRentType() {
+			var rentType = document.getElementById("rentType").value;
+			var bhkField = document.getElementById("bhkField");
+
+			// Clear previous options
+			bhkField.innerHTML = "";
+
+			if (rentType === "flat") {
+				// If flat is chosen, add BHK options
+				var bhkLabel = document.createElement("label");
+				bhkLabel.setAttribute("for", "bhk");
+				bhkLabel.textContent = "BHK:";
+				bhkField.appendChild(bhkLabel);
+				
+				bhkField.appendChild(document.createElement("br"));
+
+				var bhkSelect = document.createElement("select");
+				bhkSelect.setAttribute("id", "bhk");
+				bhkSelect.setAttribute("name", "bhk");
+				
+				// Add styles to the select element
+				bhkSelect.style.width = "90%"; // Adjust width as needed
+				bhkSelect.style.padding = "5px";
+				// Add options for BHK
+				var options = [ "1", "2", "3", "4", "5" ];
+				options.forEach(function(option) {
+					var opt = document.createElement("option");
+					opt.value = option;
+					opt.textContent = option + " BHK";
+					bhkSelect.appendChild(opt);
+				});
+				bhkField.appendChild(bhkSelect);
+			} else if (rentType === "house") {
+				// If house is chosen, add storey label
+				var storeyLabel = document.createElement("label");
+				storeyLabel.setAttribute("for", "storey");
+				storeyLabel.textContent = "Storey:";
+				bhkField.appendChild(storeyLabel);
+
+				var storeyInput = document.createElement("input");
+				storeyInput.setAttribute("type", "text");
+				storeyInput.setAttribute("id", "storey");
+				storeyInput.setAttribute("name", "storey");
+				bhkField.appendChild(storeyInput);
+			} else if (rentType === "room") {
+				// If room is chosen, add options for number of rooms
+				var roomLabel = document.createElement("label");
+				roomLabel.setAttribute("for", "numberOfRooms");
+				roomLabel.textContent = "Number of Rooms:";
+				bhkField.appendChild(roomLabel);
+
+				var roomInput = document.createElement("input");
+				roomInput.setAttribute("type", "text");
+				roomInput.setAttribute("id", "numberOfRooms");
+				roomInput.setAttribute("name", "numberOfRooms");
+				bhkField.appendChild(roomInput);
+			}
+		}
+	</script>
 
 </body>
 </html>
