@@ -67,6 +67,21 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
 
+	@Override
+	public int getExistingUserId(String email) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		JPAQueryFactory query = new JPAQueryFactory(em);
+
+		QUser quser = QUser.user;
+		int user = query.select(quser.id).from(quser).where(quser.email.eq(email)).fetchOne();
+
+		em.getTransaction().commit();
+		em.close();
+
+		return user;
+	}
+
 
 
 }

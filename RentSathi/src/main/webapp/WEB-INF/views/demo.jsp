@@ -14,7 +14,7 @@ String login = (String) session.getAttribute("login");
 	href="${pageContext.request.contextPath}/resources/css/intro.css">
 </head>
 <body>
-
+	<jsp:include page="header.jsp" />
 	<div class="services-container">
 		<c:forEach items="${rentDetails }" var="rentDetail">
 			<div class="box">

@@ -10,6 +10,8 @@ public interface RentDao {
 	
 	Rent getRentId(UUID rent_id);
 	
+	String getRentType(UUID rent_id);
+	
 	
 	
 	 

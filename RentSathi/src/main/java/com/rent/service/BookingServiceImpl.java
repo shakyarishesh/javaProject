@@ -29,6 +29,7 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public Boolean addBookingDetails(BookingTable bookingTable, UUID rent_id, String user_email) {
 		Rent rent = rentDao.getRentId(rent_id);
+		String rent_type = rentDao.getRentType(rent_id);
 		User user_id = userDao.getExistingUser(user_email);
 		
 		Booking book = new Booking();
@@ -37,10 +38,12 @@ public class BookingServiceImpl implements BookingService {
 		book.setEmail(bookingTable.getEmail());
 		book.setMobileno(bookingTable.getMobileno());
 		book.setComment(bookingTable.getComment());
-		book.setRentType(bookingTable.getRentType());
+		book.setRentType(rent_type);
 		book.setCreatedAt(CommonController.getCurrentDateTime());
 		book.setRent(rent);
 		book.setUser(user_id);
+		
+		System.out.println("rent type:"+rent_type);
 		
 		
 		return bookingDao.setBookingDetails(book);

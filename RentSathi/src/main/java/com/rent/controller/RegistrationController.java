@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.rent.dao.BookingDao;
 import com.rent.dao.RegisterDao;
 import com.rent.dao.UserDao;
 import com.rent.model.User;
@@ -38,6 +39,9 @@ public class RegistrationController {
 
 	@Autowired
 	RegisterDao registerDao;
+
+	@Autowired
+	BookingDao bookingDao;
 
 	@RequestMapping(value = "/login")
 	public String Login() {
@@ -76,10 +80,10 @@ public class RegistrationController {
 			return "redirect:/intro";
 		} else {
 			model.addAttribute("error", "Email/Password didn't matched");
-			return "login";
+			return "intro";
 		}
 
-		//LOgin for admin (static data)
+		// LOgin for admin (static data)
 //		  if (user.getEmail().equalsIgnoreCase("admin@gmail.com") &&
 //		  user.getPassword().equalsIgnoreCase("admin")) {
 //		  request.getSession().setAttribute("login", user.getEmail());
@@ -124,10 +128,20 @@ public class RegistrationController {
 	}
 
 	@RequestMapping(value = "/profile")
-	public String profile(Model model) {
+	public String profile(HttpServletRequest request, Model model) {
+
+		// this does nothing for now
 		User user = new User();
-		model.addAttribute("useremail", user.getEmail());
+		String email = user.getEmail();
+		model.addAttribute("useremail", email);
 		model.addAttribute("userpw", user.getPassword());
-		return "userprofile";
+
+		String user_email = (String) request.getSession().getAttribute("login");
+//		System.out.println(email);
+		Integer user_id = userDao.getExistingUserId(user_email);
+		model.addAttribute("bookingdetails", bookingDao.getRentDetailsByBooking(user_id));
+
+		//return "userprofile";
+		return "profile";
 	}
 }

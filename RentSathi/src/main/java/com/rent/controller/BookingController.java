@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.rent.dao.RentDao;
 import com.rent.model.Rent;
 import com.rent.service.BookingService;
 import com.rent.sprite.BookingTable;
@@ -25,12 +26,22 @@ public class BookingController {
 	
 	@Autowired
 	BookingService bookingService;
+	
+	@Autowired
+	RentDao rentDao;
 
 	@RequestMapping("/rentNow/{rent_id}")
-	public String booking(@PathVariable("rent_id") UUID rentId, RedirectAttributes redirectAttributes, Model model) {
-		model.addAttribute("rentid", rentId);
-		System.out.println("rent id:" + rentId);
-		return "booking";
+	public String booking(@PathVariable("rent_id") UUID rentId, RedirectAttributes redirectAttributes, Model model,HttpServletRequest request) {
+		if(request.getSession().getAttribute("login")!=null)
+		{
+			model.addAttribute("rentid", rentId);
+			//System.out.println("rent id:" + rentId);
+			return "booking";
+		}else
+		{
+			return "redirect:/login";
+		}
+		
 	}
 
 	@RequestMapping(path = "/bookAdd", method = RequestMethod.POST)
@@ -44,7 +55,7 @@ public class BookingController {
 		String user_email = (String) request.getSession().getAttribute("login");
 		//System.out.println("logged in as:"+user);
 	
-		//System.out.println("rentid id form bookadd:"+rent_id);
+		
 		bookingService.addBookingDetails(bookingTable, rent_id, user_email);
 		
 		return "redirect:/intro";

@@ -55,6 +55,21 @@ public class RentDaoImpl implements RentDao{
 		return rent;
 	}
 
+	@Override
+	public String getRentType(UUID rent_id) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		JPAQueryFactory query = new JPAQueryFactory(em);
+
+		QRent qRent = QRent.rent;
+		String rent = query.select(qRent.rentType).from(qRent).where(qRent.id.eq(rent_id)).fetchFirst();
+
+		em.getTransaction().commit();
+		em.close();
+
+		return rent;
+	}
+
 	
 
 }
