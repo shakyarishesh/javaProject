@@ -22,7 +22,7 @@ public class RentServiceImpl implements RentService {
 	public Boolean setUpload(RentTable rentTable, Integer userId, String img_name, byte[] img_path) {
 		Rent rent = new Rent();
 
-		rent.setBhk(rentTable.getBhk());
+		rent.setPropertySpecification(rentTable.getPropertySpecification());
 		rent.setDescription(rentTable.getDescription());
 		rent.setPrice(rentTable.getPrice());
 		rent.setRentType(rentTable.getRentType());

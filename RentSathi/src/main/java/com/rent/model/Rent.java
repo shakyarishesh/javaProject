@@ -30,8 +30,8 @@ public class Rent {
 	@Column(name="rent_type")
 	private String rentType;
 	
-	@Column(name="Property Specification")
-	private String bhk;
+	@Column(name="Property_Specification")
+	private String PropertySpecification;
 	
 	@Column(name="title")
 	private String title;
@@ -85,12 +85,12 @@ public class Rent {
 		this.rentType = rentType;
 	}
 
-	public String getBhk() {
-		return bhk;
+	public String getPropertySpecification() {
+		return PropertySpecification;
 	}
 
-	public void setBhk(String bhk) {
-		this.bhk = bhk;
+	public void setPropertySpecification(String propertySpecification) {
+		PropertySpecification = propertySpecification;
 	}
 
 	public String getTitle() {
@@ -183,10 +183,11 @@ public class Rent {
 
 	@Override
 	public String toString() {
-		return "Rent [id=" + id + ", rentType=" + rentType + ", bhk=" + bhk + ", title=" + title + ", price=" + price
-				+ ", description=" + description + ", deletedAt=" + deletedAt + ", createdBy=" + createdBy
-				+ ", updatedBy=" + updatedBy + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", imagePath="
-				+ Arrays.toString(imagePath) + ", imageName=" + imageName + ", location=" + location + "]";
+		return "Rent [id=" + id + ", rentType=" + rentType + ", PropertySpecification=" + PropertySpecification
+				+ ", title=" + title + ", price=" + price + ", description=" + description + ", deletedAt=" + deletedAt
+				+ ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + ", createdAt=" + createdAt + ", updatedAt="
+				+ updatedAt + ", imagePath=" + Arrays.toString(imagePath) + ", imageName=" + imageName + ", location="
+				+ location + "]";
 	}
 
 	

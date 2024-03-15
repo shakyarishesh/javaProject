@@ -57,29 +57,18 @@ String login = (String) session.getAttribute("login");
 
 			if (rentType === "flat") {
 				// If flat is chosen, add BHK options
-				var bhkLabel = document.createElement("label");
-				bhkLabel.setAttribute("for", "bhk");
-				bhkLabel.textContent = "BHK:";
-				bhkField.appendChild(bhkLabel);
-				
-				bhkField.appendChild(document.createElement("br"));
+			    var bhkLabel = document.createElement("label");
+			    bhkLabel.setAttribute("for", "bhk");
+			    bhkLabel.textContent = "BHK:";
+			    bhkField.appendChild(bhkLabel);
 
-				var bhkSelect = document.createElement("select");
-				bhkSelect.setAttribute("id", "bhk");
-				bhkSelect.setAttribute("name", "bhk");
-				
-				// Add styles to the select element
-				bhkSelect.style.width = "90%"; // Adjust width as needed
-				bhkSelect.style.padding = "5px";
-				// Add options for BHK
-				var options = [ "1", "2", "3", "4", "5" ];
-				options.forEach(function(option) {
-					var opt = document.createElement("option");
-					opt.value = option;
-					opt.textContent = option + " BHK";
-					bhkSelect.appendChild(opt);
-				});
-				bhkField.appendChild(bhkSelect);
+			    bhkField.appendChild(document.createElement("br"));
+
+			    var bhkInput = document.createElement("input");
+			    bhkInput.setAttribute("id", "bhk");
+			    bhkInput.setAttribute("name", "PropertySpecification");
+			    bhkInput.setAttribute("type", "text");
+			    bhkField.appendChild(bhkInput);
 			} else if (rentType === "house") {
 				// If house is chosen, add storey label
 				var storeyLabel = document.createElement("label");
@@ -90,7 +79,7 @@ String login = (String) session.getAttribute("login");
 				var storeyInput = document.createElement("input");
 				storeyInput.setAttribute("type", "text");
 				storeyInput.setAttribute("id", "storey");
-				storeyInput.setAttribute("name", "storey");
+				storeyInput.setAttribute("name", "PropertySpecification");
 				bhkField.appendChild(storeyInput);
 			} else if (rentType === "room") {
 				// If room is chosen, add options for number of rooms
@@ -102,7 +91,7 @@ String login = (String) session.getAttribute("login");
 				var roomInput = document.createElement("input");
 				roomInput.setAttribute("type", "text");
 				roomInput.setAttribute("id", "numberOfRooms");
-				roomInput.setAttribute("name", "numberOfRooms");
+				roomInput.setAttribute("name", "PropertySpecification");
 				bhkField.appendChild(roomInput);
 			}
 		}

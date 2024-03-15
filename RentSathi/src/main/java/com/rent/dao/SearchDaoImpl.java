@@ -41,7 +41,7 @@ public class SearchDaoImpl implements SearchDao {
 		List<RentList> rentlist = new ArrayList<RentList>() ;
 
 		try {
-			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.bhk
+			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.PropertySpecification
 					,qRent.imagePath, qRent.imageName, qRent.rentType, qRent.location )
 					.from(qRent)
 					.fetch();
@@ -49,7 +49,7 @@ public class SearchDaoImpl implements SearchDao {
 			for (Tuple r1 : r)
 			{
 				RentList rr = new RentList();
-				rr.setBhk(r1.get(qRent.bhk));
+				rr.setPropertySpecification(r1.get(qRent.PropertySpecification));
 				rr.setTitle(r1.get(qRent.title));
 				rr.setPrice(r1.get(qRent.price));
 				rr.setCreated_at(r1.get(qRent.createdAt));
@@ -86,7 +86,7 @@ public class SearchDaoImpl implements SearchDao {
 		List<RentList> rentlist = new ArrayList<RentList>() ;
 
 		try {
-			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.bhk
+			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.PropertySpecification
 					,qRent.imagePath, qRent.imageName, qRent.rentType, qRent.location )
 					.from(qRent)
 					.where(qRent.rentType.equalsIgnoreCase("house"))
@@ -95,7 +95,7 @@ public class SearchDaoImpl implements SearchDao {
 			for (Tuple r1 : r)
 			{
 				RentList rr = new RentList();
-				rr.setBhk(r1.get(qRent.bhk));
+				rr.setPropertySpecification(r1.get(qRent.PropertySpecification));
 				rr.setTitle(r1.get(qRent.title));
 				rr.setPrice(r1.get(qRent.price));
 				rr.setCreated_at(r1.get(qRent.createdAt));
@@ -132,7 +132,7 @@ public class SearchDaoImpl implements SearchDao {
 		List<RentList> rentlist = new ArrayList<RentList>() ;
 
 		try {
-			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.bhk
+			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.PropertySpecification
 					,qRent.imagePath, qRent.imageName, qRent.rentType, qRent.location )
 					.from(qRent)
 					.where(qRent.rentType.equalsIgnoreCase("flat"))
@@ -141,7 +141,7 @@ public class SearchDaoImpl implements SearchDao {
 			for (Tuple r1 : r)
 			{
 				RentList rr = new RentList();
-				rr.setBhk(r1.get(qRent.bhk));
+				rr.setPropertySpecification(r1.get(qRent.PropertySpecification));
 				rr.setTitle(r1.get(qRent.title));
 				rr.setPrice(r1.get(qRent.price));
 				rr.setCreated_at(r1.get(qRent.createdAt));
@@ -178,7 +178,7 @@ public class SearchDaoImpl implements SearchDao {
 		List<RentList> rentlist = new ArrayList<RentList>() ;
 
 		try {
-			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.bhk
+			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.PropertySpecification
 					,qRent.imagePath, qRent.imageName, qRent.rentType, qRent.location )
 					.from(qRent)
 					.where(qRent.rentType.equalsIgnoreCase("room"))
@@ -187,7 +187,7 @@ public class SearchDaoImpl implements SearchDao {
 			for (Tuple r1 : r)
 			{
 				RentList rr = new RentList();
-				rr.setBhk(r1.get(qRent.bhk));
+				rr.setPropertySpecification(r1.get(qRent.PropertySpecification));
 				rr.setTitle(r1.get(qRent.title));
 				rr.setPrice(r1.get(qRent.price));
 				rr.setCreated_at(r1.get(qRent.createdAt));
@@ -224,7 +224,7 @@ public class SearchDaoImpl implements SearchDao {
 		List<RentList> rentlist = new ArrayList<RentList>() ;
 
 		try {
-			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.bhk
+			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.PropertySpecification
 					,qRent.imagePath, qRent.imageName, qRent.rentType )
 					.from(qRent)
 					.where(qRent.location.eq(district)
@@ -234,7 +234,7 @@ public class SearchDaoImpl implements SearchDao {
 			for (Tuple r1 : r)
 			{
 				RentList rr = new RentList();
-				rr.setBhk(r1.get(qRent.bhk));
+				rr.setPropertySpecification(r1.get(qRent.PropertySpecification));
 				rr.setTitle(r1.get(qRent.title));
 				rr.setPrice(r1.get(qRent.price));
 				rr.setCreated_at(r1.get(qRent.createdAt));

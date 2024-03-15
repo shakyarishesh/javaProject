@@ -22,8 +22,6 @@ public class QRent extends EntityPathBase<Rent> {
 
     public static final QRent rent = new QRent("rent");
 
-    public final StringPath bhk = createString("bhk");
-
     public final DateTimePath<java.sql.Timestamp> createdAt = createDateTime("createdAt", java.sql.Timestamp.class);
 
     public final QUser createdBy;
@@ -41,6 +39,8 @@ public class QRent extends EntityPathBase<Rent> {
     public final StringPath location = createString("location");
 
     public final NumberPath<Long> price = createNumber("price", Long.class);
+
+    public final StringPath PropertySpecification = createString("PropertySpecification");
 
     public final StringPath rentType = createString("rentType");
 

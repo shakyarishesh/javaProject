@@ -6,7 +6,7 @@ public class RentTable {
 	
 	private String location;
 	
-	private String bhk;
+	private String PropertySpecification;
 	private String title;
 	
 	private long price;
@@ -29,12 +29,12 @@ public class RentTable {
 		this.location = location;
 	}
 
-	public String getBhk() {
-		return bhk;
+	public String getPropertySpecification() {
+		return PropertySpecification;
 	}
 
-	public void setBhk(String bhk) {
-		this.bhk = bhk;
+	public void setPropertySpecification(String propertySpecification) {
+		PropertySpecification = propertySpecification;
 	}
 
 	public String getTitle() {
@@ -63,9 +63,11 @@ public class RentTable {
 
 	@Override
 	public String toString() {
-		return "UploadTable [rentType=" + rentType + ", location=" + location + ", bhk=" + bhk + ", title=" + title
-				+ ", price=" + price + ", description=" + description + "]";
+		return "RentTable [rentType=" + rentType + ", location=" + location + ", PropertySpecification="
+				+ PropertySpecification + ", title=" + title + ", price=" + price + ", description=" + description
+				+ "]";
 	}
 
+	
 	
 }

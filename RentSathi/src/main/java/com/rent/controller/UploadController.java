@@ -39,21 +39,21 @@ public class UploadController {
 	public String Upload(@RequestParam("img") CommonsMultipartFile image, HttpServletRequest request, @ModelAttribute("upload") RentTable rentTable)
 	{
 		System.out.println("---------------------------------");
-		System.out.println(image.getOriginalFilename());
+		//System.out.println(image.getOriginalFilename());
 		
 		byte[] img_byte = image.getBytes();
-		System.out.println(img_byte);
+		//System.out.println(img_byte);
 		
 		
-		System.out.println(rentTable.getBhk());
+		//System.out.println(rentTable.getPropertySpecification());
 		
 		String userEmail = (String) request.getSession().getAttribute("login");
-		System.out.println("userEmail: "+userEmail);
+		//System.out.println("userEmail: "+userEmail);
 		
 		Integer userId = userDao.getExistingUser(userEmail).getId();
-		System.out.println("user id:"+userId);
+		//System.out.println("user id:"+userId);
 		
-		System.out.println("---------------------------------");
+		//System.out.println("---------------------------------");
 		rentService.setUpload(rentTable, userId, image.getOriginalFilename(), img_byte);
 		
 		

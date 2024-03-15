@@ -10,7 +10,7 @@ public class RentList {
 
 	String location;
 
-	String bhk;
+	String PropertySpecification;
 
 	String title;
 
@@ -42,12 +42,12 @@ public class RentList {
 		this.location = location;
 	}
 
-	public String getBhk() {
-		return bhk;
+	public String getPropertySpecification() {
+		return PropertySpecification;
 	}
 
-	public void setBhk(String bhk) {
-		this.bhk = bhk;
+	public void setPropertySpecification(String propertySpecification) {
+		PropertySpecification = propertySpecification;
 	}
 
 	public String getTitle() {
@@ -111,12 +111,12 @@ public class RentList {
 		// TODO Auto-generated constructor stub
 	}
 
-	public RentList(String rentType, String location, String bhk, String title, long price, String description,
-			Timestamp created_at, String imgpath, String imgname, UUID rent_id) {
+	public RentList(String rentType, String location, String propertySpecification, String title, long price,
+			String description, Timestamp created_at, String imgpath, String imgname, UUID rent_id) {
 		super();
 		this.rentType = rentType;
 		this.location = location;
-		this.bhk = bhk;
+		PropertySpecification = propertySpecification;
 		this.title = title;
 		this.price = price;
 		this.description = description;
@@ -128,11 +128,11 @@ public class RentList {
 
 	@Override
 	public String toString() {
-		return "RentList [rentType=" + rentType + ", location=" + location + ", bhk=" + bhk + ", title=" + title
-				+ ", price=" + price + ", description=" + description + ", created_at=" + created_at + ", imgpath="
-				+ imgpath + ", imgname=" + imgname + ", rent_id=" + rent_id + "]";
+		return "RentList [rentType=" + rentType + ", location=" + location + ", PropertySpecification="
+				+ PropertySpecification + ", title=" + title + ", price=" + price + ", description=" + description
+				+ ", created_at=" + created_at + ", imgpath=" + imgpath + ", imgname=" + imgname + ", rent_id="
+				+ rent_id + "]";
 	}
 
-	
 
 }
