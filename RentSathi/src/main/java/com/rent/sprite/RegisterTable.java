@@ -42,9 +42,9 @@ public class RegisterTable {
 	@NotEmpty(message = "Occupation is required.")
 	private String addressType;
 
-	@Pattern(regexp = "^(?i)(Nepali|Nepalese|Indian|Chinese|Other)$", message = "Invalid nationality value.")
+	@Pattern(regexp = "^(?i)(Nepali|Nepalese|Indian|Chinese|Other)$", message = "Invalid city value.")
 	@NotEmpty(message = "Occupation is required.")
-	private String nationality;
+	private String city;
 
 	@Pattern(regexp = "(?i)^(province 1|province 2|Bagmati|Gandaki |Lumbini|Karnali|Sudurpashchim)$", message = "Invalid province value.")
 	@NotEmpty(message = "Occupation is required.")
@@ -138,12 +138,12 @@ public class RegisterTable {
 		this.addressType = addressType;
 	}
 
-	public String getNationality() {
-		return nationality;
+	public String getCity() {
+		return city;
 	}
 
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getProvince() {
@@ -174,8 +174,9 @@ public class RegisterTable {
 	public String toString() {
 		return "RegisterTable [fullname=" + fullname + ", dob=" + dob + ", email=" + email + ", mobileno=" + mobileno
 				+ ", gender=" + gender + ", occupation=" + occupation + ", idType=" + idType + ", idNo=" + idNo
-				+ ", IssuedAuthority=" + IssuedAuthority + ", addressType=" + addressType + ", nationality="
-				+ nationality + ", province=" + province + ", district=" + district + ", password=" + password + "]";
+				+ ", IssuedAuthority=" + IssuedAuthority + ", addressType=" + addressType + ", city=" + city
+				+ ", province=" + province + ", district=" + district + ", password=" + password + "]";
 	}
 
+	
 }

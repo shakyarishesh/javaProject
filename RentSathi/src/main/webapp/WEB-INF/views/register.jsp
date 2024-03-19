@@ -14,6 +14,8 @@
 	href="<c:url value="/resources/css/registerstyle.css"/> " />
 <link rel="stylesheet"
 	href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+	
+	
 <title>Regisration Form</title>
 </head>
 <body>
@@ -25,17 +27,17 @@
 		<div class="alert alert-danger" role="alert">
 			<form:errors path="registerTable.*" />
 		</div>
-		<form action="registerPost" modelAttribute="registerTable" method=post>
+		<form action="${pageContext.request.contextPath}/registration/registerPost" modelAttribute="registerTable" method=post onsubmit="return validateForm();">
 			<div class="form first">
 				<div class="details personal">
 					<span class="title">Personal Details</span>
 					<div class="fields">
 						<div class="input-field">
-							<label>Full Name</label> <input type="text" name="fullname"
+							<label>Full Name</label> <input type="text" name="fullname" id="fullname"
 								placeholder="Enter your name" required>
 						</div>
 						<div class="input-field">
-							<label>Date of Birth</label> <input type="date" name="dob"
+							<label>Date of Birth</label> <input type="date" name="dob" id="dob"
 								placeholder="Enter birth date" required>
 						</div>
 						<div class="input-field">
@@ -127,6 +129,101 @@
 		</form>
 	</div>
 	<script src="<c:url value="/resources/js/script.js"/>"></script>
+	<script>
+    function validateForm() {
+        var fullname = document.getElementById("fullname").value;
+        var dob = document.getElementById("dob").value;
+        var email = document.getElementById("email").value;
+        var mobileno = document.getElementById("mobileno").value;
+        var gender = document.getElementById("gender").value;
+        var occupation = document.getElementById("occupation").value;
+        var idType = document.getElementById("idType").value;
+        var idNo = document.getElementById("idNo").value;
+        var IssuedAuthority = document.getElementById("IssuedAuthority").value;
+        var addressType = document.getElementById("addressType").value;
+        var nationality = document.getElementById("nationality").value;
+        var province = document.getElementById("province").value;
+        var district = document.getElementById("district").value;
+        var password = document.getElementById("password").value;
+
+        // Regular expressions for validation
+        var nameRegex = /^[a-zA-Z\s]{1,60}$/;
+        var dobRegex = /^(?:\d{4}-\d{2}-\d{2})|({0})$/;
+        var emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+        var mobileRegex = /^\d{10}$/;
+        var genderRegex = /^(?i)(Male|Female|Other)$/;
+        var occupationRegex = /^(?i)(Student|Teacher|Engineer|Doctor|Other)$/;
+        var idTypeRegex = /^(?i)(NationalId|License|Pan|Other)$/;
+        var idNoRegex = /^\d*$/;
+        var authorityRegex = /^[a-zA-Z\s]*$/;
+        var addressTypeRegex = /^(?i)(Permanent|Temporary)$/;
+        var nationalityRegex = /^(?i)(Nepali|Nepalese|Indian|Chinese|Other)$/;
+        var provinceRegex = /^(?i)(province 1|province 2|Bagmati|Gandaki|Lumbini|Karnali|Sudurpashchim)$/;
+        var districtRegex = /^(?i)(Kathmandu|Pokhara|Biratnagar|Birgunj|Nepalgunj|Dharan|Butwal|Dhangadhi|Bharatpur|Hetauda|Janakpur|Itahari|Birendranagar|Tansen|Damak|Ghorahi|Lamjung|Baglung|Myagdi|Kaski|Mustang|Syangja|Parbat|Gulmi|Arghakhanchi|Palpa|Pyuthan|Rukum|Rolpa|Dang|Banke|Bardiya|Surkhet|Dailekh|Jajarkot|Dolpa|Jumla|Kalikot|Mugu|Humla|Bajura|Bajhang|Achham|Doti|Kailali|Kanchanpur)$/;
+        var passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,20}$/;
+
+        // Validation check for each field
+        if (!fullname.match(nameRegex)) {
+        	alert("Full Name should contain alphabets only and be less than 60 characters");
+            return false;
+        }
+        if (!dob.match(dobRegex)) {
+            alert("Enter Valid Date (YYYY-mm-dd)");
+            return false;
+        }
+        if (!email.match(emailRegex)) {
+            alert("Invalid email format");
+            return false;
+        }
+        if (!mobileno.match(mobileRegex)) {
+            alert("Mobile number should be 10 digits");
+            return false;
+        }
+        if (!gender.match(genderRegex)) {
+            alert("Invalid gender value");
+            return false;
+        }
+        if (!occupation.match(occupationRegex)) {
+            alert("Invalid occupation value");
+            return false;
+        }
+        if (!idType.match(idTypeRegex)) {
+            alert("Invalid idType value");
+            return false;
+        }
+        if (!idNo.match(idNoRegex)) {
+            alert("Id number is required");
+            return false;
+        }
+        if (!IssuedAuthority.match(authorityRegex)) {
+            alert("Issued Authority should contain alphabets only");
+            return false;
+        }
+        if (!addressType.match(addressTypeRegex)) {
+            alert("Invalid addressType value");
+            return false;
+        }
+        if (!nationality.match(nationalityRegex)) {
+            alert("Invalid nationality value");
+            return false;
+        }
+        if (!province.match(provinceRegex)) {
+            alert("Invalid province value");
+            return false;
+        }
+        if (!district.match(districtRegex)) {
+            alert("Invalid district value");
+            return false;
+        }
+        if (!password.match(passwordRegex)) {
+            alert("Password must contain at least one digit, one lowercase, one uppercase, one special character, and have a length between 6 and 20 characters");
+            return false;
+        }
+
+        return true; // Form submission allowed
+    }
+</script>
+	
 </body>
 </html>
 

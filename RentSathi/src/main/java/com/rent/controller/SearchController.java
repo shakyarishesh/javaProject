@@ -42,7 +42,7 @@ public class SearchController {
 		return "demo";
 	}
 
-	@RequestMapping(path = "/searchByDistrict", method = RequestMethod.GET)
+	@RequestMapping(path = "	", method = RequestMethod.GET)
 	public String SearchByDistrict(HttpServletRequest request, HttpServletResponse response, Model model) {
 		String district = request.getParameter("district");
 		System.out.println("Search by district: " + district);

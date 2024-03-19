@@ -18,7 +18,7 @@
 		<h3 style="color: red;">${error}</h3>
 	</div>
 	<div class="login">
-		<form action="loginPost" method=post>
+		<form action="${pageContext.request.contextPath}/registration/loginPost" method=post>
 			<div class="title">Log In</div>
 			<div class="inputbox">
 				<input type="text" name="email" placeholder="Enter your email"

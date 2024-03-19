@@ -1,8 +1,10 @@
 package com.rent.dao;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.rent.model.Register;
+import com.rent.sprite.RegisterTable;
 
 public interface RegisterDao {
 
@@ -16,5 +18,5 @@ public interface RegisterDao {
 	
 	Register getRegisterId(UUID regId);
 	
-	
+	List<RegisterTable> getRegisterDetail(UUID regId);
 }

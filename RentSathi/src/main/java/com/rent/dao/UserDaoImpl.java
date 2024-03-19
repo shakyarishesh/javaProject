@@ -1,5 +1,7 @@
 package com.rent.dao;
 
+import java.util.UUID;
+
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,7 +20,7 @@ public class UserDaoImpl implements UserDao {
 	private EntityManagerFactory emf;
 	JPAQueryFactory query;
 	private static final Logger logger = Logger.getLogger(RegisterDaoImpl.class);
-	
+
 	@Override
 	public User getUser(Integer id) {
 		EntityManager em = emf.createEntityManager();
@@ -43,12 +45,12 @@ public class UserDaoImpl implements UserDao {
 			em.getTransaction().commit();
 			logger.info("User added");
 			return true;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			logger.error("error to insert User. " + e.getMessage());
-		}finally {
+		} finally {
 			em.close();
 		}
-			
+
 		return false;
 	}
 
@@ -82,6 +84,18 @@ public class UserDaoImpl implements UserDao {
 		return user;
 	}
 
+	@Override
+	public UUID getRegisterId(Integer user_id) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		JPAQueryFactory query = new JPAQueryFactory(em);
 
+		QUser quser = QUser.user;
+		UUID regId = query.select(quser.regId.id).from(quser).where(quser.id.eq(user_id)).fetchOne();
 
+		em.getTransaction().commit();
+		em.close();
+
+		return regId;
+	}
 }

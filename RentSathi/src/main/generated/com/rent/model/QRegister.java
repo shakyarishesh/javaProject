@@ -21,6 +21,8 @@ public class QRegister extends EntityPathBase<Register> {
 
     public final StringPath addressType = createString("addressType");
 
+    public final StringPath city = createString("city");
+
     public final DateTimePath<java.sql.Timestamp> createdAt = createDateTime("createdAt", java.sql.Timestamp.class);
 
     public final StringPath district = createString("district");
@@ -42,8 +44,6 @@ public class QRegister extends EntityPathBase<Register> {
     public final StringPath IssuedAuthority = createString("IssuedAuthority");
 
     public final NumberPath<Long> mobileno = createNumber("mobileno", Long.class);
-
-    public final StringPath nationality = createString("nationality");
 
     public final StringPath occupation = createString("occupation");
 

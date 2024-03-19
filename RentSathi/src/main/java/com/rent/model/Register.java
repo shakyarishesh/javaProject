@@ -54,8 +54,8 @@ public class Register {
 	@Column(name="address_type")
 	private String addressType;
 
-	@Column(name="nationality")
-	private String nationality;
+	@Column(name="city")
+	private String city;
 
 	@Column(name="province")
 	private String province;
@@ -157,12 +157,12 @@ public class Register {
 		this.addressType = addressType;
 	}
 
-	public String getNationality() {
-		return nationality;
+	public String getCity() {
+		return city;
 	}
 
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getProvince() {
@@ -201,11 +201,10 @@ public class Register {
 	public String toString() {
 		return "Register [id=" + id + ", fullname=" + fullname + ", dob=" + dob + ", email=" + email + ", mobileno="
 				+ mobileno + ", gender=" + gender + ", occupation=" + occupation + ", idType=" + idType + ", idNo="
-				+ idNo + ", IssuedAuthority=" + IssuedAuthority + ", addressType=" + addressType + ", nationality="
-				+ nationality + ", province=" + province + ", district=" + district + ", password=" + password
-				+ ", createdAt=" + createdAt + "]";
+				+ idNo + ", IssuedAuthority=" + IssuedAuthority + ", addressType=" + addressType + ", city=" + city
+				+ ", province=" + province + ", district=" + district + ", password=" + password + ", createdAt="
+				+ createdAt + "]";
 	}
 
-	
 	
 }

@@ -6,15 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.rent.dao.SearchDao;
-import com.rent.dao.RentDao;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
 	SearchDao searchDao;
-	
-	
+		
 	@RequestMapping(value="/intro")
 	public String home(Model model)
 	{

@@ -105,8 +105,10 @@ public class RegistrationController {
 			@ModelAttribute("registerTable") RegisterTable regTable, BindingResult result, Model model)
 			throws IOException {
 		if (result.hasErrors()) {
+			model.addAttribute("errors", result);
 			return "register";
 		}
+
 		String pw = request.getParameter("password");
 		String confirm_pw = request.getParameter("confirmpassword");
 
@@ -141,7 +143,12 @@ public class RegistrationController {
 		Integer user_id = userDao.getExistingUserId(user_email);
 		model.addAttribute("bookingdetails", bookingDao.getRentDetailsByBooking(user_id));
 
-		//return "userprofile";
-		return "profile";
+		// getting user's register details from logged in user(user_id)
+		UUID regId = userDao.getRegisterId(user_id);
+		//System.out.println("regId" + regId);
+		model.addAttribute("registerDetail", registerDao.getRegisterDetail(regId));
+
+		return "userprofile";
+		// return "profile";
 	}
 }

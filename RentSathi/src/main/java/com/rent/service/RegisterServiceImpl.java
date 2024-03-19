@@ -31,7 +31,7 @@ public class RegisterServiceImpl implements RegisterService {
 		register.setOccupation(regTable.getOccupation());
 		register.setAddressType(regTable.getAddressType());
 		register.setDistrict(regTable.getDistrict());
-		register.setNationality(regTable.getNationality());
+		register.setCity(regTable.getCity());
 		register.setPassword(regTable.getPassword());
 		register.setProvince(regTable.getProvince());
 		register.setIssuedAuthority(regTable.getIssuedAuthority());
@@ -42,5 +42,7 @@ public class RegisterServiceImpl implements RegisterService {
 
 		return registerDao.setRegisterDetail(register);
 	}
+
+	
 
 }

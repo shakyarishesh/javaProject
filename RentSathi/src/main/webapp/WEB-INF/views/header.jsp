@@ -20,9 +20,12 @@ String login = (String) session.getAttribute("login");
 		<div class="bx bx-menu" id="menu-icon"></div>
 		<ul class="navbar">
 			<li><a href="${pageContext.request.contextPath}/intro">Home</a></li>
-			<li><a href="${pageContext.request.contextPath}/search/housedetail">House</a></li>
-			<li><a href="${pageContext.request.contextPath}/search/flatdetail">Flats</a></li>
-			<li><a href="${pageContext.request.contextPath}/search/roomdetail">Rooms</a></li>
+			<li><a
+				href="${pageContext.request.contextPath}/search/housedetail">House</a></li>
+			<li><a
+				href="${pageContext.request.contextPath}/search/flatdetail">Flats</a></li>
+			<li><a
+				href="${pageContext.request.contextPath}/search/roomdetail">Rooms</a></li>
 			<li><a href="#About">About Us</a></li>
 		</ul>
 		<div class="header-btn">
@@ -43,10 +46,16 @@ String login = (String) session.getAttribute("login");
 			}
 			%>
 			<%
-			if (login != null) {
+			if (login != null && login.equalsIgnoreCase("admin@gmail.com")) {
 			%>
 			<a href="${pageContext.request.contextPath}/rent/upload"
 				class="upload">Upload</a>
+			<%
+			}
+			%>
+			<%
+			if (login != null) {
+			%>
 			<a href="${pageContext.request.contextPath}/registration/profile"
 				class="login">Profile</a> <a
 				href="${pageContext.request.contextPath}/registration/logout"

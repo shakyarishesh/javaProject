@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rent.dao.RentDao;
-import com.rent.model.Rent;
 import com.rent.service.BookingService;
 import com.rent.sprite.BookingTable;
 
@@ -60,4 +58,18 @@ public class BookingController {
 		
 		return "redirect:/intro";
 	}
+	
+	@RequestMapping("/bookingDetails")
+	public String bookingDetails( Model model,HttpServletRequest request) {
+		if(request.getSession().getAttribute("login")!=null)
+		{
+			
+			return "bookingdetails";
+		}else
+		{
+			return "redirect:/login";
+		}
+		
+	}
+	
 }
