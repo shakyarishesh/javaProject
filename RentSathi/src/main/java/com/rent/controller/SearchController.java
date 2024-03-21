@@ -42,15 +42,15 @@ public class SearchController {
 		return "demo";
 	}
 
-	@RequestMapping(path = "	", method = RequestMethod.GET)
+	@RequestMapping(path = "/searchByDistrict", method = RequestMethod.GET)
 	public String SearchByDistrict(HttpServletRequest request, HttpServletResponse response, Model model) {
 		String district = request.getParameter("district");
-		System.out.println("Search by district: " + district);
+		//System.out.println("Search by district: " + district);
 		
 		String rentType = request.getParameter("rentType");
-		System.out.println("Search by rentType: " + rentType);
+		//System.out.println("Search by rentType: " + rentType);
 
-		System.out.println(searchDao.getRentDetailByDistrict(district, rentType));
+		//System.out.println(searchDao.getRentDetailByDistrict(district, rentType));
 		
 		if(!searchDao.getRentDetailByDistrict(district, rentType).isEmpty())
 		{
@@ -61,4 +61,6 @@ public class SearchController {
 		}
 		return "intro";
 	}
+	
+	
 }

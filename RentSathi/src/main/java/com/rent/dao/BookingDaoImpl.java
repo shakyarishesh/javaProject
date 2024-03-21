@@ -59,7 +59,8 @@ public class BookingDaoImpl implements BookingDao {
 
 		try {
 			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.PropertySpecification
-					,qRent.imagePath, qRent.imageName, qRent.rentType, qRent.location,qRent.description )
+					,qRent.imagePath, qRent.imageName, qRent.rentType, qRent.location,qRent.description
+					,qRent.status)
 					.from(qRent)
 					.leftJoin(qBooking).on(qBooking.rent.id.eq(qRent.id))
 					.where(qBooking.user.id.eq(user_id))
@@ -76,6 +77,7 @@ public class BookingDaoImpl implements BookingDao {
 				rr.setLocation(r1.get(qRent.location));
 				rr.setRent_id(r1.get(qRent.id));
 				rr.setDescription(r1.get(qRent.description));
+				rr.setStatus(r1.get(qRent.status));
 			
 				//converting image byte[] datatype into base64 String
 				String base64image = Base64.getEncoder().encodeToString(r1.get(qRent.imagePath));

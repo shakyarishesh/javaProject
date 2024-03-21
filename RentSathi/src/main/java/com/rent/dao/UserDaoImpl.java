@@ -98,4 +98,19 @@ public class UserDaoImpl implements UserDao {
 
 		return regId;
 	}
+
+	@Override
+	public String District(Integer user_id) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		JPAQueryFactory query = new JPAQueryFactory(em);
+
+		QUser quser = QUser.user;
+		String district = query.select(quser.regId.district).from(quser).where(quser.id.eq(user_id)).fetchOne();
+
+		em.getTransaction().commit();
+		em.close();
+
+		return district;
+	}
 }

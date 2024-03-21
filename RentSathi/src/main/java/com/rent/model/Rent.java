@@ -7,6 +7,8 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -38,6 +40,10 @@ public class Rent {
 	
 	@Column(name="price")
 	private long price;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="status")
+	private Status status;
 	
 	@Column(name="description")
 	private String description;
@@ -107,6 +113,14 @@ public class Rent {
 
 	public void setPrice(long price) {
 		this.price = price;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public String getDescription() {
@@ -184,12 +198,11 @@ public class Rent {
 	@Override
 	public String toString() {
 		return "Rent [id=" + id + ", rentType=" + rentType + ", PropertySpecification=" + PropertySpecification
-				+ ", title=" + title + ", price=" + price + ", description=" + description + ", deletedAt=" + deletedAt
-				+ ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + ", createdAt=" + createdAt + ", updatedAt="
-				+ updatedAt + ", imagePath=" + Arrays.toString(imagePath) + ", imageName=" + imageName + ", location="
-				+ location + "]";
+				+ ", title=" + title + ", price=" + price + ", status=" + status + ", description=" + description
+				+ ", deletedAt=" + deletedAt + ", createdBy=" + createdBy + ", updatedBy=" + updatedBy + ", createdAt="
+				+ createdAt + ", updatedAt=" + updatedAt + ", imagePath=" + Arrays.toString(imagePath) + ", imageName="
+				+ imageName + ", location=" + location + "]";
 	}
 
-	
 	
 }

@@ -8,4 +8,5 @@ public interface UserService {
 	
 	Boolean setUser(UserTable userTable, UUID regId);
 
+	
 }

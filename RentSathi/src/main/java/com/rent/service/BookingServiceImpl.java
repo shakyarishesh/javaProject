@@ -11,6 +11,7 @@ import com.rent.dao.RentDao;
 import com.rent.dao.UserDao;
 import com.rent.model.Booking;
 import com.rent.model.Rent;
+import com.rent.model.Status;
 import com.rent.model.User;
 import com.rent.sprite.BookingTable;
 
@@ -43,10 +44,15 @@ public class BookingServiceImpl implements BookingService {
 		book.setRent(rent);
 		book.setUser(user_id);
 		
-		System.out.println("rent type:"+rent_type);
+		rent.setStatus(Status.pending);
+		book.setStatus(rent.getStatus());
+		 boolean success = bookingDao.setBookingDetails(book);
+		    if (success) {
+		        rentDao.updateRent(rent); // Update the status in the database
+		    }
 		
 		
-		return bookingDao.setBookingDetails(book);
+		return success;
 	}
 
 }

@@ -70,6 +70,23 @@ public class RentDaoImpl implements RentDao{
 		return rent;
 	}
 
+	@Override
+	public Boolean updateRent(Rent rent) {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		try {
+			em.merge(rent);
+			em.getTransaction().commit();
+			logger.info("Rent details added");
+			return true;
+		} catch (Exception e) {
+			logger.error("failed to update rent Details " + e.getMessage());
+		} finally {
+			em.close();
+		}
+		return false;
+	}
+
 	
 
 }

@@ -40,6 +40,8 @@ public class Booking {
 	private String rentType;
 
 	private Timestamp createdAt;
+	
+	private Status status;
 
 	public UUID getId() {
 		return id;
@@ -113,13 +115,20 @@ public class Booking {
 		this.createdAt = createdAt;
 	}
 
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "Booking [id=" + id + ", user=" + user + ", rent=" + rent + ", name=" + name + ", email=" + email
 				+ ", mobileno=" + mobileno + ", comment=" + comment + ", rentType=" + rentType + ", createdAt="
-				+ createdAt + "]";
+				+ createdAt + ", status=" + status + "]";
 	}
 
 	
-
 }

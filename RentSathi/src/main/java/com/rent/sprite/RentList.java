@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.UUID;
 
+import com.rent.model.Status;
+
 public class RentList {
 
 	String rentType;
@@ -25,6 +27,29 @@ public class RentList {
 	String imgname;
 	
 	UUID rent_id;
+	
+	Status status;
+
+	public RentList() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public RentList(String rentType, String location, String propertySpecification, String title, long price,
+			String description, Timestamp created_at, String imgpath, String imgname, UUID rent_id, Status status) {
+		super();
+		this.rentType = rentType;
+		this.location = location;
+		PropertySpecification = propertySpecification;
+		this.title = title;
+		this.price = price;
+		this.description = description;
+		this.created_at = created_at;
+		this.imgpath = imgpath;
+		this.imgname = imgname;
+		this.rent_id = rent_id;
+		this.status = status;
+	}
 
 	public String getRentType() {
 		return rentType;
@@ -106,24 +131,12 @@ public class RentList {
 		this.rent_id = rent_id;
 	}
 
-	public RentList() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Status getStatus() {
+		return status;
 	}
 
-	public RentList(String rentType, String location, String propertySpecification, String title, long price,
-			String description, Timestamp created_at, String imgpath, String imgname, UUID rent_id) {
-		super();
-		this.rentType = rentType;
-		this.location = location;
-		PropertySpecification = propertySpecification;
-		this.title = title;
-		this.price = price;
-		this.description = description;
-		this.created_at = created_at;
-		this.imgpath = imgpath;
-		this.imgname = imgname;
-		this.rent_id = rent_id;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	@Override
@@ -131,8 +144,8 @@ public class RentList {
 		return "RentList [rentType=" + rentType + ", location=" + location + ", PropertySpecification="
 				+ PropertySpecification + ", title=" + title + ", price=" + price + ", description=" + description
 				+ ", created_at=" + created_at + ", imgpath=" + imgpath + ", imgname=" + imgname + ", rent_id="
-				+ rent_id + "]";
+				+ rent_id + ", status=" + status + "]";
 	}
 
-
+	
 }

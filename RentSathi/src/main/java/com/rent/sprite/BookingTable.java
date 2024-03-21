@@ -3,6 +3,8 @@ package com.rent.sprite;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import com.rent.model.Status;
+
 public class BookingTable {
 	
 	private String name;
@@ -16,6 +18,8 @@ public class BookingTable {
 	private String rentType;
 
 	private Timestamp createdAt;
+	
+	private Status status;
 
 	public String getName() {
 		return name;
@@ -65,10 +69,18 @@ public class BookingTable {
 		this.createdAt = createdAt;
 	}
 
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "BookingTable [name=" + name + ", email=" + email + ", mobileno=" + mobileno + ", comment=" + comment
-				+ ", rentType=" + rentType + ", createdAt=" + createdAt + "]";
+				+ ", rentType=" + rentType + ", createdAt=" + createdAt + ", status=" + status + "]";
 	}
 
 	

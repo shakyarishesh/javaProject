@@ -1,5 +1,7 @@
 package com.rent.sprite;
 
+import com.rent.model.Status;
+
 public class RentTable {
 
 	private String rentType;
@@ -12,6 +14,8 @@ public class RentTable {
 	private long price;
 	
 	private String description;
+	
+	private Status status;
 
 	public String getRentType() {
 		return rentType;
@@ -61,13 +65,20 @@ public class RentTable {
 		this.description = description;
 	}
 
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "RentTable [rentType=" + rentType + ", location=" + location + ", PropertySpecification="
 				+ PropertySpecification + ", title=" + title + ", price=" + price + ", description=" + description
-				+ "]";
+				+ ", status=" + status + "]";
 	}
 
-	
 	
 }

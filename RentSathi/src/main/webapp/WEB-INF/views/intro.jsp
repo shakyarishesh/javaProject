@@ -92,22 +92,28 @@
 		</div>
 		<div class="services-container">
 			<c:forEach items="${rentDetails }" var="rentDetail">
-				<div class="box">
-					<div class="box-img">
-						<!--  -->
-						<img src="data:image/jpeg;base64,${rentDetail.imgpath}"
-							alt="Image">
+				<c:if
+					test="${rentDetail.status == 'available' || rentDetail.status == 'pending' }">
+					<div class="box">
+						<div class="box-img">
+							<!--  -->
+							<img src="data:image/jpeg;base64,${rentDetail.imgpath}"
+								alt="Image">
 
+						</div>
+						<p>${rentDetail.created_at }</p>
+						${rentDetail.status }
+						<h3>${rentDetail.title }</h3>
+						<h2>
+							${rentDetail.price }<span>/per Month</span>
+						</h2>
+						<p>Location: ${rentDetail.location }</p>
+						<c:if test="${rentDetail.status	 == 'available' }">
+						<a
+							href="${pageContext.request.contextPath}/book/rentNow/${rentDetail.rent_id}"
+							class="btn">Rent Now</a></c:if>
 					</div>
-					<p>${rentDetail.created_at }</p>
-					<h3>${rentDetail.title }</h3>
-					<h2>
-						${rentDetail.price }<span>/per Month</span>
-					</h2>
-					<a
-						href="${pageContext.request.contextPath}/book/rentNow/${rentDetail.rent_id}"
-						class="btn">Rent Now</a>
-				</div>
+				</c:if>
 			</c:forEach>
 			<h2>${error }</h2>
 

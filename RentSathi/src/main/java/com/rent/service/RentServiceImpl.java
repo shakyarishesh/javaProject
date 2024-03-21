@@ -7,6 +7,7 @@ import com.rent.controller.CommonController;
 import com.rent.dao.RentDao;
 import com.rent.dao.UserDao;
 import com.rent.model.Rent;
+import com.rent.model.Status;
 import com.rent.sprite.RentTable;
 
 @Service
@@ -35,6 +36,7 @@ public class RentServiceImpl implements RentService {
 		rent.setImageName(img_name);
 		rent.setImagePath(img_path);
 		rent.setLocation(rentTable.getLocation());
+		rent.setStatus(Status.available);
 
 		return rentDao.addUpload(rent);
 

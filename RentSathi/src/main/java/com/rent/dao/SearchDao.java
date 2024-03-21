@@ -17,5 +17,7 @@ public interface SearchDao {
 	List<RentList> getRentDetailByRoom();
 
 	List<RentList> getRentDetailByDistrict(String district, String rentType);
+	
+	List<RentList> getRentDetailDis(String district);
 
 }

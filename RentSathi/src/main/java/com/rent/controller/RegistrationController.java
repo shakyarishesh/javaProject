@@ -140,12 +140,16 @@ public class RegistrationController {
 
 		String user_email = (String) request.getSession().getAttribute("login");
 //		System.out.println(email);
-		Integer user_id = userDao.getExistingUserId(user_email);
-		model.addAttribute("bookingdetails", bookingDao.getRentDetailsByBooking(user_id));
+		Integer user_id = null;
+		if (user_email != null) {
+			user_id = userDao.getExistingUserId(user_email);
+		} else {
+			return "redirect:/intro";
+		}
 
 		// getting user's register details from logged in user(user_id)
 		UUID regId = userDao.getRegisterId(user_id);
-		//System.out.println("regId" + regId);
+		// System.out.println("regId" + regId);
 		model.addAttribute("registerDetail", registerDao.getRegisterDetail(regId));
 
 		return "userprofile";

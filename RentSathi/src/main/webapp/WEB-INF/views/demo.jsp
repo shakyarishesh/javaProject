@@ -24,11 +24,15 @@ String login = (String) session.getAttribute("login");
 
 				</div>
 				<p>${rentDetail.created_at }</p>
+				<p>${rentDetail.status }</p>
 				<h3>${rentDetail.title }</h3>
 				<h2>
 					${rentDetail.price }<span>/per Month</span>
 				</h2>
-				<a href="#" class="btn">Rent Now</a>
+				<p>Location: ${rentDetail.location }</p>
+				<a
+					href="${pageContext.request.contextPath}/book/rentNow/${rentDetail.rent_id}"
+					class="btn">Rent Now</a>
 			</div>
 		</c:forEach>
 	</div>

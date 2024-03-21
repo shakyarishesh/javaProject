@@ -44,6 +44,8 @@ public class QRent extends EntityPathBase<Rent> {
 
     public final StringPath rentType = createString("rentType");
 
+    public final EnumPath<Status> status = createEnum("status", Status.class);
+
     public final StringPath title = createString("title");
 
     public final DateTimePath<java.sql.Timestamp> updatedAt = createDateTime("updatedAt", java.sql.Timestamp.class);

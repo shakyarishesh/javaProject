@@ -12,7 +12,6 @@ public interface RentDao {
 	
 	String getRentType(UUID rent_id);
 	
+	Boolean updateRent(Rent rent);
 	
-	
-	 
 }

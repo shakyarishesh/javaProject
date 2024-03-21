@@ -38,6 +38,8 @@ public class QBooking extends EntityPathBase<Booking> {
 
     public final StringPath rentType = createString("rentType");
 
+    public final EnumPath<Status> status = createEnum("status", Status.class);
+
     public final QUser user;
 
     public QBooking(String variable) {

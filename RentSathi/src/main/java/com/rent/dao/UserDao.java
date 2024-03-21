@@ -15,4 +15,6 @@ public interface UserDao {
 	int getExistingUserId(String email);
 	
 	UUID getRegisterId(Integer user_id);
+	
+	String District(Integer user_id);
 }
