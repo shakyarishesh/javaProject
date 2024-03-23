@@ -14,8 +14,10 @@
 	href="<c:url value="/resources/css/registerstyle.css"/> " />
 <link rel="stylesheet"
 	href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-	
-	
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="script.js"></script>
+
 <title>Regisration Form</title>
 </head>
 <body>
@@ -27,25 +29,27 @@
 		<div class="alert alert-danger" role="alert">
 			<form:errors path="registerTable.*" />
 		</div>
-		<form action="${pageContext.request.contextPath}/registration/registerPost" modelAttribute="registerTable" method=post onsubmit="return validateForm();">
+		<form
+			action="${pageContext.request.contextPath}/registration/registerPost"
+			modelAttribute="registerTable" method=post>
 			<div class="form first">
 				<div class="details personal">
 					<span class="title">Personal Details</span>
 					<div class="fields">
 						<div class="input-field">
-							<label>Full Name</label> <input type="text" name="fullname" id="fullname"
-								placeholder="Enter your name" required>
+							<label>Full Name</label> <input type="text" name="fullname"
+								id="fullname" placeholder="Enter your name" required>
 						</div>
 						<div class="input-field">
-							<label>Date of Birth</label> <input type="date" name="dob" id="dob"
-								placeholder="Enter birth date" required>
+							<label>Date of Birth</label> <input type="date" name="dob"
+								id="dob" placeholder="Enter birth date" required>
 						</div>
 						<div class="input-field">
-							<label>Email</label> <input type="text" name="email"
+							<label>Email</label> <input type="text" name="email" id="email"
 								placeholder="Enter your email" required>
 						</div>
 						<div class="input-field">
-							<label>Mobile Number</label> <input type="number" name="mobileno"
+							<label>Mobile Number</label> <input type="number" name="mobileno" id="phonenum"
 								placeholder="Enter mobile number" required>
 						</div>
 						<div class="input-field">
@@ -67,11 +71,15 @@
 					<span class="title">Identity Details</span>
 					<div class="fields">
 						<div class="input-field">
-							<label>ID Type</label> <input type="text" name="idType"
-								placeholder="Enter ID type" required>
+							<label>ID Type</label> <select name="idType" required>
+								<option disabled selected>Select ID type</option>
+								<option>Citizenship</option>
+								<option>Passport</option>
+								<option>Driving License</option>
+							</select>
 						</div>
 						<div class="input-field">
-							<label>ID Number</label> <input type="number" name="idNo"
+							<label>ID Number</label> <input type="text" name="idNo"
 								placeholder="Enter ID number" required>
 						</div>
 						<div class="input-field">
@@ -90,20 +98,110 @@
 					<span class="title">Address Details</span>
 					<div class="fields">
 						<div class="input-field">
-							<label>Address Type</label> <input type="text" name="addressType"
-								placeholder="Permanent or Temporary" required>
+							<label>Address Type</label> <select name="addressType" required>
+								<option disabled selected>Select address type</option>
+								<option>Temporary</option>
+								<option>Permanent</option>
+							</select>
 						</div>
 						<div class="input-field">
-							<label>City</label> <input type="text" name="nationality"
+							<label>City</label> <input type="text" name="city"
 								placeholder="Enter your city" required>
 						</div>
 						<div class="input-field">
-							<label>Province</label> <input type="text" name="province"
-								placeholder="Enter your state" required>
+							<label>Province</label> <select id="province" class="select2"
+								name="province" required>
+								<option disabled selected>Select your province</option>
+								<option value="Province 1">Province 1</option>
+								<option value="Province 2">Province 2</option>
+								<option value="Bagmati Province">Bagmati Province</option>
+								<option value="Gandaki Province">Gandaki Province</option>
+								<option value="Lumbini Province">Lumbini Province</option>
+								<option value="Karnali Province">Karnali Province</option>
+								<option value="Sudurpashchim Province">Sudurpashchim
+									Province</option>
+							</select>
 						</div>
 						<div class="input-field">
-							<label>District</label> <input type="text" name="district"
-								placeholder="Enter your district" required>
+							<label>District</label><select id="district" name="district"
+								required>
+								<option disabled selected>Select your district</option>
+								<option value="Achham">Achham</option>
+								<option value="Arghakhanchi">Arghakhanchi</option>
+								<option value="Baglung">Baglung</option>
+								<option value="Baitadi">Baitadi</option>
+								<option value="Bajhang">Bajhang</option>
+								<option value="Bajura">Bajura</option>
+								<option value="Banke">Banke</option>
+								<option value="Bara">Bara</option>
+								<option value="Bardiya">Bardiya</option>
+								<option value="Bhaktapur">Bhaktapur</option>
+								<option value="Bhojpur">Bhojpur</option>
+								<option value="Chitwan">Chitwan</option>
+								<option value="Dadeldhura">Dadeldhura</option>
+								<option value="Dailekh">Dailekh</option>
+								<option value="Dang">Dang</option>
+								<option value="Darchula">Darchula</option>
+								<option value="Dhading">Dhading</option>
+								<option value="Dhankuta">Dhankuta</option>
+								<option value="Dhanusa">Dhanusa</option>
+								<option value="Dholkha">Dholkha</option>
+								<option value="Dolpa">Dolpa</option>
+								<option value="Doti">Doti</option>
+								<option value="Gorkha">Gorkha</option>
+								<option value="Gulmi">Gulmi</option>
+								<option value="Humla">Humla</option>
+								<option value="Illam">Illam</option>
+								<option value="Jajarkot">Jajarkot</option>
+								<option value="Jhapa">Jhapa</option>
+								<option value="Jumla">Jumla</option>
+								<option value="Kailali">Kailali</option>
+								<option value="Kalikot">Kalikot</option>
+								<option value="Kanchanpur">Kanchanpur</option>
+								<option value="Kapilvastu">Kapilvastu</option>
+								<option value="Kaski">Kaski</option>
+								<option value="Kathmandu">Kathmandu</option>
+								<option value="Kavrepalanchok">Kavrepalanchok</option>
+								<option value="Khotang">Khotang</option>
+								<option value="Lalitpur">Lalitpur</option>
+								<option value="Lamjung">Lamjung</option>
+								<option value="Mahottari">Mahottari</option>
+								<option value="Makwanpur">Makwanpur</option>
+								<option value="Manang">Manang</option>
+								<option value="Morang">Morang</option>
+								<option value="Mugu">Mugu</option>
+								<option value="Mustang">Mustang</option>
+								<option value="Myagdi">Myagdi</option>
+								<option value="Nawalparasi">Nawalparasi</option>
+								<option value="Nuwakot">Nuwakot</option>
+								<option value="Okhaldhunga">Okhaldhunga</option>
+								<option value="Palpa">Palpa</option>
+								<option value="Panchthar">Panchthar</option>
+								<option value="Parbat">Parbat</option>
+								<option value="Parsa">Parsa</option>
+								<option value="Pyuthan">Pyuthan</option>
+								<option value="Ramechhap">Ramechhap</option>
+								<option value="Rasuwa">Rasuwa</option>
+								<option value="Rautahat">Rautahat</option>
+								<option value="Rolpa">Rolpa</option>
+								<option value="Rukum">Rukum</option>
+								<option value="Rupandehi">Rupandehi</option>
+								<option value="Salyan">Salyan</option>
+								<option value="Sankhuwasabha">Sankhuwasabha</option>
+								<option value="Saptari">Saptari</option>
+								<option value="Sarlahi">Sarlahi</option>
+								<option value="Sindhuli">Sindhuli</option>
+								<option value="Sindhupalchok">Sindhupalchok</option>
+								<option value="Siraha">Siraha</option>
+								<option value="Solukhumbu">Solukhumbu</option>
+								<option value="Sunsari">Sunsari</option>
+								<option value="Surkhet">Surkhet</option>
+								<option value="Syangja">Syangja</option>
+								<option value="Tanahu">Tanahu</option>
+								<option value="Taplejung">Taplejung</option>
+								<option value="Terhathum">Terhathum</option>
+								<option value="Udayapur">Udayapur</option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -111,9 +209,9 @@
 				<div class="fields">
 					<div class="input-field">
 						<input type="password" name="password"
-							placeholder="Enter your password" required> <input
+							placeholder="Enter your password" id="pd1" required> <input
 							type="password" name="confirmpassword"
-							placeholder="Enter your password again" required>
+							placeholder="Enter your password again" id="pd2" required>
 					</div>
 				</div>
 				<div class="buttons">
@@ -121,7 +219,7 @@
 						<i class="uil uil-navigator"></i> <span class="btnText">Back</span>
 					</div>
 
-					<button class="sumbit">
+					<button class="submit" id="submit">
 						<span class="btnText">Submit</span> <i class="uil uil-navigator"></i>
 					</button>
 				</div>
@@ -129,101 +227,6 @@
 		</form>
 	</div>
 	<script src="<c:url value="/resources/js/script.js"/>"></script>
-	<script>
-    function validateForm() {
-        var fullname = document.getElementById("fullname").value;
-        var dob = document.getElementById("dob").value;
-        var email = document.getElementById("email").value;
-        var mobileno = document.getElementById("mobileno").value;
-        var gender = document.getElementById("gender").value;
-        var occupation = document.getElementById("occupation").value;
-        var idType = document.getElementById("idType").value;
-        var idNo = document.getElementById("idNo").value;
-        var IssuedAuthority = document.getElementById("IssuedAuthority").value;
-        var addressType = document.getElementById("addressType").value;
-        var nationality = document.getElementById("nationality").value;
-        var province = document.getElementById("province").value;
-        var district = document.getElementById("district").value;
-        var password = document.getElementById("password").value;
-
-        // Regular expressions for validation
-        var nameRegex = /^[a-zA-Z\s]{1,60}$/;
-        var dobRegex = /^(?:\d{4}-\d{2}-\d{2})|({0})$/;
-        var emailRegex = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
-        var mobileRegex = /^\d{10}$/;
-        var genderRegex = /^(?i)(Male|Female|Other)$/;
-        var occupationRegex = /^(?i)(Student|Teacher|Engineer|Doctor|Other)$/;
-        var idTypeRegex = /^(?i)(NationalId|License|Pan|Other)$/;
-        var idNoRegex = /^\d*$/;
-        var authorityRegex = /^[a-zA-Z\s]*$/;
-        var addressTypeRegex = /^(?i)(Permanent|Temporary)$/;
-        var nationalityRegex = /^(?i)(Nepali|Nepalese|Indian|Chinese|Other)$/;
-        var provinceRegex = /^(?i)(province 1|province 2|Bagmati|Gandaki|Lumbini|Karnali|Sudurpashchim)$/;
-        var districtRegex = /^(?i)(Kathmandu|Pokhara|Biratnagar|Birgunj|Nepalgunj|Dharan|Butwal|Dhangadhi|Bharatpur|Hetauda|Janakpur|Itahari|Birendranagar|Tansen|Damak|Ghorahi|Lamjung|Baglung|Myagdi|Kaski|Mustang|Syangja|Parbat|Gulmi|Arghakhanchi|Palpa|Pyuthan|Rukum|Rolpa|Dang|Banke|Bardiya|Surkhet|Dailekh|Jajarkot|Dolpa|Jumla|Kalikot|Mugu|Humla|Bajura|Bajhang|Achham|Doti|Kailali|Kanchanpur)$/;
-        var passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,20}$/;
-
-        // Validation check for each field
-        if (!fullname.match(nameRegex)) {
-        	alert("Full Name should contain alphabets only and be less than 60 characters");
-            return false;
-        }
-        if (!dob.match(dobRegex)) {
-            alert("Enter Valid Date (YYYY-mm-dd)");
-            return false;
-        }
-        if (!email.match(emailRegex)) {
-            alert("Invalid email format");
-            return false;
-        }
-        if (!mobileno.match(mobileRegex)) {
-            alert("Mobile number should be 10 digits");
-            return false;
-        }
-        if (!gender.match(genderRegex)) {
-            alert("Invalid gender value");
-            return false;
-        }
-        if (!occupation.match(occupationRegex)) {
-            alert("Invalid occupation value");
-            return false;
-        }
-        if (!idType.match(idTypeRegex)) {
-            alert("Invalid idType value");
-            return false;
-        }
-        if (!idNo.match(idNoRegex)) {
-            alert("Id number is required");
-            return false;
-        }
-        if (!IssuedAuthority.match(authorityRegex)) {
-            alert("Issued Authority should contain alphabets only");
-            return false;
-        }
-        if (!addressType.match(addressTypeRegex)) {
-            alert("Invalid addressType value");
-            return false;
-        }
-        if (!nationality.match(nationalityRegex)) {
-            alert("Invalid nationality value");
-            return false;
-        }
-        if (!province.match(provinceRegex)) {
-            alert("Invalid province value");
-            return false;
-        }
-        if (!district.match(districtRegex)) {
-            alert("Invalid district value");
-            return false;
-        }
-        if (!password.match(passwordRegex)) {
-            alert("Password must contain at least one digit, one lowercase, one uppercase, one special character, and have a length between 6 and 20 characters");
-            return false;
-        }
-
-        return true; // Form submission allowed
-    }
-</script>
-	
 </body>
 </html>
 

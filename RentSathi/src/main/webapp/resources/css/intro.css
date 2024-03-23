@@ -9,6 +9,7 @@
     list-style: none;
     text-decoration: none;
     font-family: "Poppins",sans-serif;
+    /*background: linear-gradient(to left, #e9b8b8, #0a99ff);*/
 }
 :root {
     --main-color: #102a78;
@@ -109,6 +110,7 @@ header {
     grid-template-columns: repeat(2, 1fr);
 }
 .text h1 {
+    padding-top: 45px;
     font-size: 3.5rem;
     letter-spacing: 2px;
 }
@@ -206,6 +208,7 @@ text-align: center;
     grid-template-columns: repeat(auto-fit,minmax(250px, auto));
     gap: 1rem;
     margin-top: 2rem;
+    
 }
 .rent-container .box {
     text-align: center;
@@ -227,16 +230,20 @@ text-align: center;
     font-size: 1rem;
     font-weight: 500;
 }
+.rent .heading{
+    padding-top: 10px;
+    margin-top: 180px;
+}
 .rent-container .box .bx:hover,
 .rent-container .box .bxs-home-heart{
     background: var(--gradient);
     color:#fbfcff;
 }
 
-.services .services-container{
+.services .services-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(500px, auto));
-    gap:1rem;
+    grid-template-columns: repeat(auto-fit, minmax(calc(50% - 0.5rem), calc(33.333% - 0.5rem)));
+    gap: 1rem;
     margin-top: 2rem;
 }
 .services-container .box{
@@ -300,4 +307,16 @@ text-align: center;
         padding: 50px 40px;
     }
 
+}
+
+footer {
+    background-color: #5c9edd;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    font-size: 16px;
+    margin: 0;
 }

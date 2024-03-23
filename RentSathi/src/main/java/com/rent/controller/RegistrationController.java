@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.python.antlr.PythonParser.else_clause_return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,7 +67,12 @@ public class RegistrationController {
 		UUID regId = registerDao.getIdByEmail(em);
 		// System.out.println("id:" + regId);
 
-		if (email != null && password != null) {
+		if (email.equalsIgnoreCase("admin@gmail.com") && password.equalsIgnoreCase("Admin12345678@")) {
+			
+			return "redirect:/admin/index";
+			
+		} else if (email != null && password != null) {
+			
 			request.getSession().setAttribute("login", user.getEmail());
 			// request.getSession().setAttribute("userpw", user.getPassword());
 			User us = userDao.getExistingUser(user.getEmail());
@@ -78,10 +84,13 @@ public class RegistrationController {
 				userService.setUser(user, regId);
 			}
 			return "redirect:/intro";
-		} else {
+			
+		}else {
+			
 			model.addAttribute("error", "Email/Password didn't matched");
 			return "intro";
 		}
+		
 
 		// LOgin for admin (static data)
 //		  if (user.getEmail().equalsIgnoreCase("admin@gmail.com") &&

@@ -47,7 +47,7 @@ public class Register {
 
 	@Column(name="id_no", length = 40)
 	private Integer idNo;
-
+	
 	@Column(name="issued_authority")
 	private String IssuedAuthority;
 

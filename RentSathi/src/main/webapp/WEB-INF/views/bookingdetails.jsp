@@ -48,6 +48,9 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<div class="container">
+		<a href ="${pageContext.request.contextPath }/intro"><button style="text-decoration: none;">Home</button></a>
+		</div>
 	</div>
 	<script
 		src="${pageContext.request.contextPath}/resources/js/profscript.js"></script>

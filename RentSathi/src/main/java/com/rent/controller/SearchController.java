@@ -23,7 +23,7 @@ public class SearchController {
 		model.addAttribute("rentDetails", searchDao.getRentDetailByHouse());
 		// System.out.println(uploadDao.getRentDetail());
 
-		return "demo";
+		return "flatroomhouse";
 	}
 
 	@RequestMapping(path = "/flatdetail", method = RequestMethod.GET)
@@ -31,7 +31,7 @@ public class SearchController {
 		model.addAttribute("rentDetails", searchDao.getRentDetailByFlat());
 		// System.out.println(uploadDao.getRentDetail());
 
-		return "demo";
+		return "flatroomhouse";
 	}
 
 	@RequestMapping(path = "/roomdetail", method = RequestMethod.GET)
@@ -39,7 +39,7 @@ public class SearchController {
 		model.addAttribute("rentDetails", searchDao.getRentDetailByRoom());
 		// System.out.println(uploadDao.getRentDetail());
 
-		return "demo";
+		return "flatroomhouse";
 	}
 
 	@RequestMapping(path = "/searchByDistrict", method = RequestMethod.GET)

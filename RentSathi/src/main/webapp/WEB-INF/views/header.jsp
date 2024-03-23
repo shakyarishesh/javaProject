@@ -19,13 +19,13 @@ String login = (String) session.getAttribute("login");
 			src="<c:url value="/resources/Images/logo3.jpg"/>" alt=""></a>
 		<div class="bx bx-menu" id="menu-icon"></div>
 		<ul class="navbar">
-			<li><a href="${pageContext.request.contextPath}/intro">Home</a></li>
+			<li><a href="<c:url value="/intro"/>">Home</a></li>
 			<li><a
-				href="${pageContext.request.contextPath}/search/housedetail">House</a></li>
+				href="<c:url value="/search/housedetail"/>">House</a></li>
 			<li><a
-				href="${pageContext.request.contextPath}/search/flatdetail">Flats</a></li>
+				href="<c:url value="/search/flatdetail"/>">Flats</a></li>
 			<li><a
-				href="${pageContext.request.contextPath}/search/roomdetail">Rooms</a></li>
+				href="<c:url value="/search/roomdetail"/>">Rooms</a></li>
 			<li><a href="#About">About Us</a></li>
 		</ul>
 		<div class="header-btn">
@@ -38,9 +38,9 @@ String login = (String) session.getAttribute("login");
 			<%
 			if (login == null) {
 			%>
-			<a href="${pageContext.request.contextPath}/registration/login"
+			<a href="<c:url value="/registration/login"/>"
 				class="login">Log In</a> <a
-				href="${pageContext.request.contextPath}/registration/register"
+				href="<c:url value="/registration/register"/>"
 				class="signup">Sign Up</a>
 			<%
 			}

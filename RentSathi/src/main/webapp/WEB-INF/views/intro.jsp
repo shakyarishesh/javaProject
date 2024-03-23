@@ -102,16 +102,22 @@
 
 						</div>
 						<p>${rentDetail.created_at }</p>
-						${rentDetail.status }
+						<c:if test="${rentDetail.status	 == 'available' }">
+						<div style="color: green;">● ${rentDetail.status }</div>
+						</c:if>
+						<c:if test="${rentDetail.status	 == 'pending' }">
+						<div style="color: yellow;">● ${rentDetail.status }</div>
+						</c:if>
 						<h3>${rentDetail.title }</h3>
 						<h2>
 							${rentDetail.price }<span>/per Month</span>
 						</h2>
 						<p>Location: ${rentDetail.location }</p>
 						<c:if test="${rentDetail.status	 == 'available' }">
-						<a
-							href="${pageContext.request.contextPath}/book/rentNow/${rentDetail.rent_id}"
-							class="btn">Rent Now</a></c:if>
+							<a
+								href="${pageContext.request.contextPath}/book/rentNow/${rentDetail.rent_id}"
+								class="btn">Rent Now</a>
+						</c:if>
 					</div>
 				</c:if>
 			</c:forEach>
