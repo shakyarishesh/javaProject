@@ -122,6 +122,7 @@
 				</c:if>
 			</c:forEach>
 			<h2>${error }</h2>
+			${pageContext.request.contextPath }
 
 		</div>
 	</section>

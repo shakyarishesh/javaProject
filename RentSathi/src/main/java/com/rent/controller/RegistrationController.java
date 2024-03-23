@@ -69,6 +69,8 @@ public class RegistrationController {
 
 		if (email.equalsIgnoreCase("admin@gmail.com") && password.equalsIgnoreCase("Admin12345678@")) {
 			
+			request.getSession().setAttribute("login", user.getEmail());
+			//System.out.println("user:"+user.getEmail());
 			return "redirect:/admin/index";
 			
 		} else if (email != null && password != null) {

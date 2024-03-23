@@ -153,4 +153,29 @@ public class RegisterDaoImpl implements RegisterDao {
 
 		return registerTable;
 	}
+
+	@Override
+	public Boolean deteleUserReg(UUID regId) {
+		 EntityManager em = emf.createEntityManager();
+		    em.getTransaction().begin();
+		    try {	   
+		        Register user = em.find(Register.class, regId);
+		        if (user != null) {
+		            em.remove(user);
+		            em.getTransaction().commit();
+		            logger.info("User deleted");
+		            return true;
+		        } else {
+		            logger.error("User not found");
+		            return false;
+		        }
+		    } catch (Exception e) {
+		        logger.error("Error to delete User. " + e.getMessage());
+		    } finally {
+		        em.close();
+		    }
+		    return false;
+	}
+
+	
 }

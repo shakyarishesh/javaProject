@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -35,17 +35,17 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/index">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user.htm">
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/users">
                     <i class="fa-solid fa-users"></i>
                     <span>User</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Listings.htm">
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/listings">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Listing</span></a>
             </li>

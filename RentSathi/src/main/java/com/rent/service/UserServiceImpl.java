@@ -24,11 +24,11 @@ public class UserServiceImpl implements UserService {
 	public Boolean setUser(UserTable userTable, UUID regId) {
 		Register register = registerDao.getRegisterId(regId) ;
 		User user = new User();
-		System.out.println("---------------------------------");
-		System.out.println("email"+userTable.getEmail());
-		System.out.println("pw"+userTable.getPassword());
-		System.out.println("id"+register);
-		System.out.println("---------------------------------");
+//		System.out.println("---------------------------------");
+//		System.out.println("email"+userTable.getEmail());
+//		System.out.println("pw"+userTable.getPassword());
+//		System.out.println("id"+register);
+//		System.out.println("---------------------------------");
 		user.setEmail(userTable.getEmail());
 		user.setPassword(userTable.getPassword());
 		user.setRegId(register);

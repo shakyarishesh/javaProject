@@ -17,7 +17,8 @@ public class HomeController {
 	public String home(Model model) {
 	  model.addAttribute("rentDetails", searchDao.getRentDetail());
 	  //System.out.println(uploadDao.getRentDetail()); 
-	  return "intro"; }
+	  return "intro";
+	  }
 
 	@RequestMapping(value = "/login")
 	public String Login() {

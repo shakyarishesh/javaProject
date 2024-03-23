@@ -13,6 +13,8 @@ public class UserTable {
 	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,20}$", message = "Password must contain at least one digit, one lowercase, one uppercase, one special character, and have a length between 6 and 20 characters.")
 	@NotEmpty(message = "Password is required.")
 	private String password;
+	
+	Integer id;
 
 	public String getEmail() {
 		return email;
@@ -30,11 +32,19 @@ public class UserTable {
 		this.password = password;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
-		return "UserTable [email=" + email + ", password=" + password + "]";
+		return "UserTable [email=" + email + ", password=" + password + ", id=" + id + "]";
 	}
-	
+
 	
 
 }

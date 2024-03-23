@@ -18,6 +18,8 @@ import com.rent.model.QBooking;
 import com.rent.model.QRent;
 import com.rent.model.QUser;
 import com.rent.model.Rent;
+import com.rent.sprite.AdminBookingTable;
+import com.rent.sprite.BookingTable;
 import com.rent.sprite.RentList;
 
 @Repository
@@ -96,6 +98,54 @@ public class BookingDaoImpl implements BookingDao {
 		}
 
 		return rentlist;
+	}
+
+	@Override
+	public List<AdminBookingTable> getAllBookings() {
+		EntityManager em = emf.createEntityManager();
+		JPAQueryFactory query = new JPAQueryFactory(em);
+		em.getTransaction().begin();
+		
+		QBooking qBooking = QBooking.booking;
+		QRent qRent = QRent.rent;
+		
+		List<AdminBookingTable> bookings = new ArrayList<>();
+		
+		try {
+		List<Tuple> booking = query.select(qBooking.id,qBooking.name,qBooking.email
+				,qBooking.mobileno,qBooking.rentType,qBooking.comment,qBooking.createdAt
+				,qRent.title,qRent.id,qRent.location,qRent.price,qRent.status)
+				.from(qBooking)
+				.leftJoin(qRent).on(qBooking.rent.id.eq(qRent.id))
+				.fetch();
+		
+		for(Tuple b : booking)
+		{
+			AdminBookingTable bb = new AdminBookingTable();
+			bb.setBookingId(b.get(qBooking.id));
+			bb.setName(b.get(qBooking.name));
+			bb.setEmail(b.get(qBooking.email));
+			bb.setMobileno(b.get(qBooking.mobileno));
+			bb.setRentType(b.get(qBooking.rentType));
+			bb.setComment(b.get(qBooking.comment));
+			bb.setCreatedAt(b.get(qBooking.createdAt));
+			bb.setTitle(b.get(qRent.title));
+			bb.setRentId(b.get(qBooking.rent.id));
+			bb.setLocation(b.get(qRent.location));
+			bb.setPrice(b.get(qRent.price));
+			bb.setStatus(b.get(qRent.status));
+			
+			bookings.add(bb);
+			
+		}
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}finally {
+			em.close();
+		}
+		
+		return bookings;
 	}
 
 }

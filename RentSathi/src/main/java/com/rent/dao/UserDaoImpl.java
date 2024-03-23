@@ -1,5 +1,7 @@
 package com.rent.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -7,11 +9,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import org.apache.log4j.Logger;
+import org.python.antlr.PythonParser.list_for_return;
 import org.springframework.stereotype.Repository;
 
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.rent.model.QUser;
 import com.rent.model.User;
+import com.rent.sprite.UserTable;
 
 @Repository
 public class UserDaoImpl implements UserDao {
@@ -112,5 +117,54 @@ public class UserDaoImpl implements UserDao {
 		em.close();
 
 		return district;
+	}
+
+	@Override
+	public List<UserTable> getAllUser() {
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		JPAQueryFactory query = new JPAQueryFactory(em);
+
+		List<UserTable> users = new ArrayList<>();
+		QUser quser = QUser.user;
+		List<Tuple> user = query.select(quser.id,quser.email,quser.password).from(quser).fetch();
+
+		for(Tuple u : user)
+		{
+			UserTable uu = new UserTable();
+			uu.setId(u.get(quser.id));
+			uu.setEmail(u.get(quser.email));
+			uu.setPassword(u.get(quser.password));
+			
+			users.add(uu);
+		}
+		
+		em.getTransaction().commit();
+		em.close();
+
+		return users;
+	}
+
+	@Override
+	public Boolean deleteUser(Integer user_id) {
+	    EntityManager em = emf.createEntityManager();
+	    em.getTransaction().begin();
+	    try {	   
+	        User user = em.find(User.class, user_id);
+	        if (user != null) {
+	            em.remove(user);
+	            em.getTransaction().commit();
+	            logger.info("User deleted");
+	            return true;
+	        } else {
+	            logger.error("User not found");
+	            return false;
+	        }
+	    } catch (Exception e) {
+	        logger.error("Error to delete User. " + e.getMessage());
+	    } finally {
+	        em.close();
+	    }
+	    return false;
 	}
 }
