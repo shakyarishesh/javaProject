@@ -52,7 +52,6 @@ public class BookingDaoImpl implements BookingDao {
 	public List<RentList> getRentDetailsByBooking(Integer user_id){
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRent qRent = QRent.rent;
 		QBooking qBooking =QBooking.booking;
 		//QUser qUser = QUser.user;
@@ -88,12 +87,12 @@ public class BookingDaoImpl implements BookingDao {
 			
 				
 				rentlist.add(rr);
+				
 			}
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
-		}finally
-		{
+		}finally {
 			em.close();
 		}
 
@@ -104,7 +103,7 @@ public class BookingDaoImpl implements BookingDao {
 	public List<AdminBookingTable> getAllBookings() {
 		EntityManager em = emf.createEntityManager();
 		JPAQueryFactory query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
+		
 		
 		QBooking qBooking = QBooking.booking;
 		QRent qRent = QRent.rent;
@@ -114,7 +113,7 @@ public class BookingDaoImpl implements BookingDao {
 		try {
 		List<Tuple> booking = query.select(qBooking.id,qBooking.name,qBooking.email
 				,qBooking.mobileno,qBooking.rentType,qBooking.comment,qBooking.createdAt
-				,qRent.title,qRent.id,qRent.location,qRent.price,qRent.status)
+				,qRent.title,qRent.id,qBooking.rent.id,qRent.location,qRent.price,qRent.status)
 				.from(qBooking)
 				.leftJoin(qRent).on(qBooking.rent.id.eq(qRent.id))
 				.fetch();
@@ -138,6 +137,7 @@ public class BookingDaoImpl implements BookingDao {
 			bookings.add(bb);
 			
 		}
+		
 		}catch(Exception e)
 		{
 			e.printStackTrace();

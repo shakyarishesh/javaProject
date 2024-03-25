@@ -1,5 +1,7 @@
 package com.rent.controller;
 
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rent.dao.BookingDao;
 import com.rent.dao.RegisterDao;
+import com.rent.dao.RentDao;
 import com.rent.dao.UserDao;
+import com.rent.model.Status;
 
 @Controller
 @RequestMapping("/admin")
@@ -26,6 +30,9 @@ public class AdminController {
 	
 	@Autowired
 	BookingDao bookingDao;
+	
+	@Autowired
+	RentDao rentDao;
 
 	@RequestMapping(value = "/index")
 	public String index() {
@@ -46,6 +53,21 @@ public class AdminController {
 		if (request.getSession().getAttribute("login") != null) {
 			model.addAttribute("listings", bookingDao.getAllBookings());
 			return "admin/listings";
+		}
+		return "redirect:/intro";
+
+	}
+	
+	@RequestMapping(path = "/listings/{rent_id}/{status}", method = RequestMethod.POST)
+	public String listingsPost(@PathVariable("rent_id") UUID rentId, 
+            @PathVariable("status") String status,HttpServletRequest request, Model model) {
+		if (request.getSession().getAttribute("login") != null) {
+			
+			Status statuss =  Status.valueOf(status);
+		
+			rentDao.changestatus(rentId, statuss);
+			
+			return "redirect:/admin/listings";
 		}
 		return "redirect:/intro";
 

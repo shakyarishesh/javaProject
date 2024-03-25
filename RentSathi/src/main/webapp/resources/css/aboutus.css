@@ -1,0 +1,132 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+}
+main {
+    padding: 80px 0;
+    background-image: url("images/Background1.png"); 
+    background-size: cover; 
+    background-position: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: justify;
+    font-family: 'Arial', sans-serif;
+    padding: 50px 20px;
+}
+
+
+.about-us {
+    max-width: 800px;
+    text-align: justify;
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 40px; 
+    border-radius: 10px; 
+    margin-bottom: 50px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.about-us h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.about-us p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.key-features {
+    margin-top: 40px;
+}
+
+.key-features h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.key-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.key-features ul li {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.key-features ul li i {
+    margin-right: 10px;
+}
+
+.team {
+    margin-top: 40px;
+}
+
+.team h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.team p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.team ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.team ul li {
+    margin: 0 20px;
+}
+
+.team ul li img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.team ul li h4 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.team ul li p {
+    font-size: 16px;
+    color: #666;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: #5c9edd;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    font-size: 16px;
+    margin: 0;
+}

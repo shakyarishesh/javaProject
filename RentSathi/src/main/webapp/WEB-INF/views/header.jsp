@@ -26,7 +26,7 @@ String login = (String) session.getAttribute("login");
 				href="<c:url value="/search/flatdetail"/>">Flats</a></li>
 			<li><a
 				href="<c:url value="/search/roomdetail"/>">Rooms</a></li>
-			<li><a href="#About">About Us</a></li>
+			<li><a href="<c:url value="/registration/aboutus"/>">About Us</a></li>
 		</ul>
 		<div class="header-btn">
 			<%-- <c:if test="${email == null}">
@@ -50,6 +50,14 @@ String login = (String) session.getAttribute("login");
 			%>
 			<a href="${pageContext.request.contextPath}/rent/upload"
 				class="upload">Upload</a>
+			<%
+			}
+			%>
+			<%
+			if (login != null && login.equalsIgnoreCase("admin@gmail.com")) {
+			%>
+			<a href="${pageContext.request.contextPath}/admin/index"
+				class="upload">Admin Dashboard</a>
 			<%
 			}
 			%>

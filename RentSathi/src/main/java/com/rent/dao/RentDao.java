@@ -3,6 +3,7 @@ package com.rent.dao;
 import java.util.UUID;
 
 import com.rent.model.Rent;
+import com.rent.model.Status;
 
 public interface RentDao {
 
@@ -14,4 +15,5 @@ public interface RentDao {
 	
 	Boolean updateRent(Rent rent);
 	
+	Boolean changestatus(UUID rentId, Status status);
 }

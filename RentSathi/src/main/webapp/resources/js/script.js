@@ -53,8 +53,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Event listener for form submission
+    
     form.addEventListener("submit", function(event) {
-        //event.preventDefault(); // Prevent default form submission
+        event.preventDefault(); // Prevent default form submission
 
         // Validate passwords before submission
         if (!validatePasswords()) {
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Successful validation
         alert("Registered Successfully! Click OK to continue");
+        return ture;
 
     });
 });

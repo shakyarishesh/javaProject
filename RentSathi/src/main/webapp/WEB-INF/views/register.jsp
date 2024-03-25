@@ -16,7 +16,6 @@
 	href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="script.js"></script>
 
 <title>Regisration Form</title>
 </head>
@@ -226,7 +225,7 @@
 			</div>
 		</form>
 	</div>
-	<script src="<c:url value="/resources/js/script.js"/>"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/script.js"></script>
 </body>
 </html>
 

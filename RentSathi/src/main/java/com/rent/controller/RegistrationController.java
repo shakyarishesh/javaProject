@@ -71,7 +71,7 @@ public class RegistrationController {
 			
 			request.getSession().setAttribute("login", user.getEmail());
 			//System.out.println("user:"+user.getEmail());
-			return "redirect:/admin/index";
+			return "redirect:/intro";
 			
 		} else if (email != null && password != null) {
 			
@@ -166,4 +166,11 @@ public class RegistrationController {
 		return "userprofile";
 		// return "profile";
 	}
+	
+	@RequestMapping(value = "/aboutus")
+	public String aboutUs(HttpServletRequest request) {
+		
+		return "about-us";
+	}
+	
 }

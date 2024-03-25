@@ -17,6 +17,7 @@
 <body
 	style="background-image: url('<c:url value="/resources/Images/Background4.png"/>')">
 	<jsp:include page="header.jsp" />
+	
 	<!-- Home  -->
 	<section class="home" id="home">
 		<div class="text">
@@ -122,7 +123,7 @@
 				</c:if>
 			</c:forEach>
 			<h2>${error }</h2>
-			${pageContext.request.contextPath }
+			${msg }
 
 		</div>
 	</section>

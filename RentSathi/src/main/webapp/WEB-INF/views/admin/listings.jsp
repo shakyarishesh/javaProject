@@ -11,12 +11,13 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
 </head>
-<body>
+<body
+	style="background-image: url('<c:url value="/resources/Images/Background1.png"/>')">
 
 	<div class="container mt-5">
 		<h2>Property specifications</h2>
 		<p>Here's a list of properties with their specifications</p>
-		<table class="table table-striped table-bordered">
+		<table class="table-bordered">
 			<thead>
 				<tr>
 					<th>S.No</th>
@@ -33,6 +34,7 @@
 					<th>Location</th>
 					<th>Price</th>
 					<th>Status</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<%
@@ -41,7 +43,7 @@
 			<c:forEach items="${listings }" var="l">
 				<tbody>
 					<tr>
-						<td><%= i++ %></td>
+						<td><%=i++%></td>
 						<td>${l.bookingId }</td>
 						<td>${l.name }</td>
 						<td>${l.email }</td>
@@ -54,10 +56,44 @@
 						<td>${l.location }</td>
 						<td>${l.price }</td>
 						<td>${l.status }</td>
+						<td>
+							<div>
+								<%-- <input type="hidden" class="rent-id" value="${l.rentId}"> --%>
+								<form action="${pageContext.request.contextPath }/admin/listings/${l.rentId }/approved" method="post"><button
+										class="pull-right btn btn-primary plan-action"
+										data-value="approved">Approve</button></form>
+								<form action="${pageContext.request.contextPath }/admin/listings/${l.rentId }/rejected" method="post"><button
+										class="pull-right btn btn-danger plan-action"
+										data-value="rejected" style="margin-right: 10px;">Reject</button></form>
+
+							</div>
+						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
 		</table>
 	</div>
+
+	<script type="text/javascript">
+		$(function() {
+			$(document)
+					.on(
+							'click',
+							'.plan-action',
+							function() {
+								var Status = $(this).data('value');
+								var rentId = $(this).closest('td').find(
+										'.rent-id').val();
+								console.log(Status);
+
+								var form = $('<form method="POST">'
+										+ '<input type="text" name="status" value="' + Status + '" />'
+										+ '<input type="hidden" name="rentId" value="' + rentId + '" />'
+										+ '</form>');
+								form.appendTo('body').submit();
+								form.remove();
+							});
+		});
+	</script>
 </body>
 </html>

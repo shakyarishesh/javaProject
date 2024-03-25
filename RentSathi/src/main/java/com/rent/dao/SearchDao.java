@@ -18,6 +18,6 @@ public interface SearchDao {
 
 	List<RentList> getRentDetailByDistrict(String district, String rentType);
 	
-	List<RentList> getRentDetailDis(String district);
+	//List<RentList> getRentDetailDis(String district);
 
 }

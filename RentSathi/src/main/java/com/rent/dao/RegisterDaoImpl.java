@@ -16,7 +16,6 @@ import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.rent.model.QRegister;
 import com.rent.model.Register;
-import com.rent.model.User;
 import com.rent.sprite.RegisterTable;
 
 @Repository
@@ -49,25 +48,26 @@ public class RegisterDaoImpl implements RegisterDao {
 	public String getEmail(String email) {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRegister qRegister = QRegister.register;
-		logger.info("email" + email);
-		String e = null;
+		logger.info("email: " + email);
+		String ee = null;
 
 		try {
-			e = query.select(qRegister.email).from(qRegister).where(qRegister.email.eq(email)).fetchOne();
-		} catch (Exception ex) {
+			ee = query.select(qRegister.email).from(qRegister).where(qRegister.email.eq(email)).fetchOne();
+		}catch (Exception ex) {
 			ex.printStackTrace();
+		}finally
+		{
+			em.close();
 		}
 
-		return e;
+		return ee;
 	}
 
 	@Override
 	public String getPassword(String password) {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRegister qRegister = QRegister.register;
 		String p = null;
 
@@ -75,6 +75,9 @@ public class RegisterDaoImpl implements RegisterDao {
 			p = query.select(qRegister.password).from(qRegister).where(qRegister.password.eq(password)).fetchOne();
 		} catch (Exception ex) {
 			ex.printStackTrace();
+		}finally {
+			em.close();
+			
 		}
 
 		return p;
@@ -84,7 +87,6 @@ public class RegisterDaoImpl implements RegisterDao {
 	public Register getRegisterId(UUID regId) {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRegister qRegister = QRegister.register;
 		logger.info("regId: " + regId);
 		Register e = null;
@@ -93,6 +95,8 @@ public class RegisterDaoImpl implements RegisterDao {
 			e = query.select(qRegister).from(qRegister).where(qRegister.id.eq(regId)).fetchFirst();
 		} catch (Exception ex) {
 			ex.printStackTrace();
+		}finally {
+			em.close();
 		}
 
 		return e;
@@ -102,7 +106,6 @@ public class RegisterDaoImpl implements RegisterDao {
 	public UUID getIdByEmail(String email) {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRegister qRegister = QRegister.register;
 		UUID e = null;
 
@@ -110,6 +113,8 @@ public class RegisterDaoImpl implements RegisterDao {
 			e = query.select(qRegister.id).from(qRegister).where(qRegister.email.eq(email)).fetchOne();
 		} catch (Exception ex) {
 			ex.printStackTrace();
+		}finally {
+			em.close();
 		}
 
 		return e;
@@ -119,7 +124,6 @@ public class RegisterDaoImpl implements RegisterDao {
 	public List<RegisterTable> getRegisterDetail(UUID regId) {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRegister qRegister = QRegister.register;
 		List<Tuple> e = null;
 
@@ -149,6 +153,8 @@ public class RegisterDaoImpl implements RegisterDao {
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
+		}finally {
+			em.close();
 		}
 
 		return registerTable;

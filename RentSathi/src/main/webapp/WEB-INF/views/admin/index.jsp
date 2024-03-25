@@ -49,6 +49,11 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Listing</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/intro">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Go to Home page</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

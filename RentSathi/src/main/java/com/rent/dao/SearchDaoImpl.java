@@ -34,7 +34,6 @@ public class SearchDaoImpl implements SearchDao {
 	public List<RentList> getRentDetail() {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRent qRent = QRent.rent;
 
 		List<RentList> rentlist = new ArrayList<RentList>();
@@ -63,6 +62,7 @@ public class SearchDaoImpl implements SearchDao {
 
 				rentlist.add(rr);
 			}
+			em.getTransaction().commit();
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -77,7 +77,6 @@ public class SearchDaoImpl implements SearchDao {
 	public List<RentList> getRentDetailByHouse() {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRent qRent = QRent.rent;
 
 		List<RentList> rentlist = new ArrayList<RentList>();
@@ -121,7 +120,6 @@ public class SearchDaoImpl implements SearchDao {
 	public List<RentList> getRentDetailByFlat() {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRent qRent = QRent.rent;
 
 		List<RentList> rentlist = new ArrayList<RentList>();
@@ -164,7 +162,6 @@ public class SearchDaoImpl implements SearchDao {
 	public List<RentList> getRentDetailByRoom() {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRent qRent = QRent.rent;
 
 		List<RentList> rentlist = new ArrayList<RentList>();
@@ -207,7 +204,6 @@ public class SearchDaoImpl implements SearchDao {
 	public List<RentList> getRentDetailByDistrict(String district, String rentType) {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRent qRent = QRent.rent;
 
 		List<RentList> rentlist = new ArrayList<RentList>();
@@ -245,11 +241,10 @@ public class SearchDaoImpl implements SearchDao {
 		return rentlist;
 	}
 
-	@Override
+/*	@Override
 	public List<RentList> getRentDetailDis(String district) {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
-		em.getTransaction().begin();
 		QRent qRent = QRent.rent;
 
 		List<RentList> rentlist = new ArrayList<RentList>();
@@ -285,5 +280,5 @@ public class SearchDaoImpl implements SearchDao {
 		}
 
 		return rentlist;
-	}
+	}*/
 }
