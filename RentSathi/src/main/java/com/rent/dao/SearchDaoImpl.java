@@ -62,7 +62,6 @@ public class SearchDaoImpl implements SearchDao {
 
 				rentlist.add(rr);
 			}
-			em.getTransaction().commit();
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,6 +13,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+
+import com.rent.util.PasswordEncryptor;
 
 @Entity
 @Table(name = "register_details")
@@ -64,6 +67,7 @@ public class Register {
 	private String district;
 
 	@Column(name="password")
+	@Convert(converter = PasswordEncryptor.class)
 	private String password;
 
 	@Column(name = "created_at")

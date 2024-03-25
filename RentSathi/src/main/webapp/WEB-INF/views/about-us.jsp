@@ -12,6 +12,7 @@
 </head>
 <body
 	style="background-image: url('<c:url value="/resources/Images/Background1.png"/>')">
+	<jsp:include page="header.jsp" />
 	<main>
 		<section class="about-us">
 			<h2>About Rentsathi</h2>
