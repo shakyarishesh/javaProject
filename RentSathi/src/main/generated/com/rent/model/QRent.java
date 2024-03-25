@@ -22,11 +22,11 @@ public class QRent extends EntityPathBase<Rent> {
 
     public static final QRent rent = new QRent("rent");
 
-    public final DateTimePath<java.sql.Timestamp> createdAt = createDateTime("createdAt", java.sql.Timestamp.class);
+    public final DatePath<java.sql.Date> createdAt = createDate("createdAt", java.sql.Date.class);
 
     public final QUser createdBy;
 
-    public final DateTimePath<java.sql.Timestamp> deletedAt = createDateTime("deletedAt", java.sql.Timestamp.class);
+    public final DatePath<java.sql.Date> deletedAt = createDate("deletedAt", java.sql.Date.class);
 
     public final StringPath description = createString("description");
 
@@ -48,7 +48,7 @@ public class QRent extends EntityPathBase<Rent> {
 
     public final StringPath title = createString("title");
 
-    public final DateTimePath<java.sql.Timestamp> updatedAt = createDateTime("updatedAt", java.sql.Timestamp.class);
+    public final DatePath<java.sql.Date> updatedAt = createDate("updatedAt", java.sql.Date.class);
 
     public final QUser updatedBy;
 

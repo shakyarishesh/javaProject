@@ -28,8 +28,8 @@ public class RentServiceImpl implements RentService {
 		rent.setPrice(rentTable.getPrice());
 		rent.setRentType(rentTable.getRentType());
 		rent.setTitle(rentTable.getTitle());
-		rent.setCreatedAt(CommonController.getCurrentDateTime());
-		rent.setUpdatedAt(CommonController.getCurrentDateTime());
+		rent.setCreatedAt(CommonController.getCurrentDate());
+		rent.setUpdatedAt(CommonController.getCurrentDate());
 		rent.setDeletedAt(null);
 		rent.setCreatedBy(userDao.getUser(userId));
 		rent.setUpdatedBy(userDao.getUser(userId));

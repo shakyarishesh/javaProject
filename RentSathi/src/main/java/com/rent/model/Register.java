@@ -67,7 +67,7 @@ public class Register {
 	private String district;
 
 	@Column(name="password")
-	@Convert(converter = PasswordEncryptor.class)
+	//@Convert(converter = PasswordEncryptor.class)
 	private String password;
 
 	@Column(name = "created_at")

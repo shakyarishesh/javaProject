@@ -123,10 +123,13 @@
 				</c:if>
 			</c:forEach>
 			<h2>${error }</h2>
-			${msg }
+			
 
 		</div>
 	</section>
+	 <footer>
+      <p>&copy; RentSathi 2024. All rights reserved.</p>
+  </footer>
 	<script src="<c:url value="/resources/js/main.js"/>"></script>
 </body>
 </html>

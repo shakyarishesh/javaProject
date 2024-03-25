@@ -211,7 +211,7 @@ public class SearchDaoImpl implements SearchDao {
 			List<Tuple> r = query
 					.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.PropertySpecification,
 							qRent.imagePath, qRent.imageName, qRent.rentType
-							,qRent.status)
+							,qRent.status, qRent.location)
 					.from(qRent).where(qRent.location.eq(district).and(qRent.rentType.eq(rentType))).fetch();
 
 			for (Tuple r1 : r) {
@@ -223,6 +223,7 @@ public class SearchDaoImpl implements SearchDao {
 				rr.setRentType(r1.get(qRent.rentType));
 				rr.setRent_id(r1.get(qRent.id));
 				rr.setStatus(r1.get(qRent.status));
+				rr.setLocation(r1.get(qRent.location));
 
 				// converting image byte[] datatype into base64 String
 				String base64image = Base64.getEncoder().encodeToString(r1.get(qRent.imagePath));

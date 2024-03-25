@@ -15,8 +15,8 @@
 	style="background-image: url('<c:url value="/resources/Images/Background1.png"/>')">
 
 	<div class="container mt-5">
-		<h2>Property specifications</h2>
-		<p>Here's a list of properties with their specifications</p>
+		<h2>Booking Details</h2>
+		<p>Here's a list of bookings with their User's Id</p>
 		<table class="table-bordered">
 			<thead>
 				<tr>
@@ -59,10 +59,10 @@
 						<td>
 							<div>
 								<%-- <input type="hidden" class="rent-id" value="${l.rentId}"> --%>
-								<form action="${pageContext.request.contextPath }/admin/listings/${l.rentId }/approved" method="post"><button
+								<form action="${pageContext.request.contextPath }/admin/bookinglistings/${l.rentId }/approved" method="post"><button
 										class="pull-right btn btn-primary plan-action"
 										data-value="approved">Approve</button></form>
-								<form action="${pageContext.request.contextPath }/admin/listings/${l.rentId }/rejected" method="post"><button
+								<form action="${pageContext.request.contextPath }/admin/bookinglistings/${l.rentId }/rejected" method="post"><button
 										class="pull-right btn btn-danger plan-action"
 										data-value="rejected" style="margin-right: 10px;">Reject</button></form>
 
@@ -72,6 +72,11 @@
 				</tbody>
 			</c:forEach>
 		</table>
+	</div>
+	<div class="container">
+		<a href="${pageContext.request.contextPath}/admin/index"
+			style="text-decoration: none; color: inherit;"><button
+				style="font-size: 20px; background-color: #ff6600; color: white; border: none; padding: 10px 20px;">Back</button></a>
 	</div>
 
 	<script type="text/javascript">

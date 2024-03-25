@@ -11,7 +11,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
 </head>
-<body>
+<body style="background-image: url('<c:url value="/resources/Images/Background1.png"/>')">
 
 	<div class="container mt-5">
 		<h2>User Records</h2>
@@ -41,7 +41,7 @@
 							<form
 								action="${pageContext.request.contextPath}/admin/deleteUser/${u.id}"
 								method="GET">
-								<button type="submit">Delete user</button>
+								<button class="pull-right btn btn-danger plan-action" type="submit">Delete user</button>
 							</form>
 						</td>
 

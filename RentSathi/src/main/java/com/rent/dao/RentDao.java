@@ -1,9 +1,11 @@
 package com.rent.dao;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.rent.model.Rent;
 import com.rent.model.Status;
+import com.rent.sprite.RentList;
 
 public interface RentDao {
 
@@ -16,4 +18,8 @@ public interface RentDao {
 	Boolean updateRent(Rent rent);
 	
 	Boolean changestatus(UUID rentId, Status status);
+	
+	List<RentList> getAllRent();
+	
+	Boolean deleteRent(UUID rent_id);
 }

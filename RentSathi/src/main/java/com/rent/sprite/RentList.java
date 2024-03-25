@@ -1,7 +1,6 @@
 package com.rent.sprite;
 
-import java.sql.Timestamp;
-import java.util.Arrays;
+import java.sql.Date;
 import java.util.UUID;
 
 import com.rent.model.Status;
@@ -12,7 +11,7 @@ public class RentList {
 
 	String location;
 
-	String PropertySpecification;
+	String propertySpecification;
 
 	String title;
 
@@ -20,7 +19,7 @@ public class RentList {
 
 	String description;
 	
-	Timestamp created_at;
+	Date created_at;
 
 	String imgpath;
 	
@@ -29,27 +28,8 @@ public class RentList {
 	UUID rent_id;
 	
 	Status status;
-
-	public RentList() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public RentList(String rentType, String location, String propertySpecification, String title, long price,
-			String description, Timestamp created_at, String imgpath, String imgname, UUID rent_id, Status status) {
-		super();
-		this.rentType = rentType;
-		this.location = location;
-		PropertySpecification = propertySpecification;
-		this.title = title;
-		this.price = price;
-		this.description = description;
-		this.created_at = created_at;
-		this.imgpath = imgpath;
-		this.imgname = imgname;
-		this.rent_id = rent_id;
-		this.status = status;
-	}
+	
+	String createdBy;
 
 	public String getRentType() {
 		return rentType;
@@ -68,11 +48,11 @@ public class RentList {
 	}
 
 	public String getPropertySpecification() {
-		return PropertySpecification;
+		return propertySpecification;
 	}
 
 	public void setPropertySpecification(String propertySpecification) {
-		PropertySpecification = propertySpecification;
+		this.propertySpecification = propertySpecification;
 	}
 
 	public String getTitle() {
@@ -99,11 +79,11 @@ public class RentList {
 		this.description = description;
 	}
 
-	public Timestamp getCreated_at() {
+	public Date getCreated_at() {
 		return created_at;
 	}
 
-	public void setCreated_at(Timestamp created_at) {
+	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
 
@@ -139,12 +119,43 @@ public class RentList {
 		this.status = status;
 	}
 
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
 	@Override
 	public String toString() {
-		return "RentList [rentType=" + rentType + ", location=" + location + ", PropertySpecification="
-				+ PropertySpecification + ", title=" + title + ", price=" + price + ", description=" + description
+		return "RentList [rentType=" + rentType + ", location=" + location + ", propertySpecification="
+				+ propertySpecification + ", title=" + title + ", price=" + price + ", description=" + description
 				+ ", created_at=" + created_at + ", imgpath=" + imgpath + ", imgname=" + imgname + ", rent_id="
-				+ rent_id + ", status=" + status + "]";
+				+ rent_id + ", status=" + status + ", createdBy=" + createdBy + "]";
+	}
+
+	public RentList(String rentType, String location, String propertySpecification, String title, long price,
+			String description, Date created_at, String imgpath, String imgname, UUID rent_id, Status status,
+			String createdBy) {
+		super();
+		this.rentType = rentType;
+		this.location = location;
+		this.propertySpecification = propertySpecification;
+		this.title = title;
+		this.price = price;
+		this.description = description;
+		this.created_at = created_at;
+		this.imgpath = imgpath;
+		this.imgname = imgname;
+		this.rent_id = rent_id;
+		this.status = status;
+		this.createdBy = createdBy;
+	}
+
+	public RentList() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	

@@ -21,7 +21,7 @@
 </head>
 <body>
 	<div class="container">
-		<header>Registration (KYC verification)</header>
+		<header>Registration</header>
 		<div>
 			<h3 style="color: red;">${error}</h3>
 		</div>

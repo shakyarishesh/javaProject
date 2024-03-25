@@ -13,7 +13,7 @@ public interface BookingDao {
 	
 	public List<RentList> getRentDetailsByBooking(Integer user_id);
 	
-	List<AdminBookingTable> getAllBookings();
+	List<AdminBookingTable> getAllBookingsBooked();
 
 
 }

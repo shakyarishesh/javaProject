@@ -9,7 +9,6 @@
     list-style: none;
     text-decoration: none;
     font-family: "Poppins",sans-serif;
-    /*background: linear-gradient(to left, #e9b8b8, #0a99ff);*/
 }
 :root {
     --main-color: #102a78;
@@ -202,17 +201,20 @@ text-align: center;
     font-size: 2.3rem;
     color: #5449ef;
 }
+.rent, .services{
+    background: linear-gradient(to left, #e9b8b8, #0a99ff);
+}
 .rent-container{
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fit,minmax(250px, auto));
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
     
 }
 .rent-container .box {
     text-align: center;
-    padding: 20px;
+    padding: 10px;
 }
 .rent-container .box .bx{
     font-size: 35px;
@@ -232,7 +234,7 @@ text-align: center;
 }
 .rent .heading{
     padding-top: 10px;
-    margin-top: 180px;
+    margin-top: 20px;
 }
 .rent-container .box .bx:hover,
 .rent-container .box .bxs-home-heart{
@@ -244,7 +246,7 @@ text-align: center;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(calc(50% - 0.5rem), calc(33.333% - 0.5rem)));
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 .services-container .box{
     padding: 10px;
@@ -254,13 +256,25 @@ text-align: center;
 .services-container .box .box-img{
     width: 100%;
     height: 400px;
+    position: relative;
+    overflow: hidden;
+  
 }
 .services-container .box .box-img img{
     width: 100%;
     height: 100%;
     border-radius: 1rem;
     object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+
 }
+
+.services-container .box .box-img:hover img {
+    transform: scale(1.2); 
+  }
+  
+ 
 .services-container .box p{
     padding: 0 10px;
     border: 1px solid var(--text-color);

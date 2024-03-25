@@ -1,7 +1,7 @@
 package com.rent.model;
 
 
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -49,7 +49,7 @@ public class Rent {
 	private String description;
 	
 	@Column(name = "deleted_at")
-	private Timestamp deletedAt;
+	private Date deletedAt;
 
 	@ManyToOne
 	@JoinColumn(name = "created_by")
@@ -60,10 +60,10 @@ public class Rent {
 	private User updatedBy;
 
 	@Column(name = "created_at")
-	private Timestamp createdAt;
+	private Date createdAt;
 
 	@Column(name = "updated_at")
-	private Timestamp updatedAt;
+	private Date updatedAt;
 	
 	@Column(name="image_path")
 	@Lob
@@ -131,11 +131,11 @@ public class Rent {
 		this.description = description;
 	}
 
-	public Timestamp getDeletedAt() {
+	public Date getDeletedAt() {
 		return deletedAt;
 	}
 
-	public void setDeletedAt(Timestamp deletedAt) {
+	public void setDeletedAt(Date deletedAt) {
 		this.deletedAt = deletedAt;
 	}
 
@@ -155,19 +155,19 @@ public class Rent {
 		this.updatedBy = updatedBy;
 	}
 
-	public Timestamp getCreatedAt() {
+	public Date getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Timestamp createdAt) {
+	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
-	public Timestamp getUpdatedAt() {
+	public Date getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Timestamp updatedAt) {
+	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

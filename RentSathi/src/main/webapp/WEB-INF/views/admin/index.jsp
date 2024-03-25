@@ -45,9 +45,14 @@
                     <span>User</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/admin/listings">
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/rentlistings">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Listing</span></a>
+                    <span>Rent Listing</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/admin/bookinglistings">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Booking Listing</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/intro">

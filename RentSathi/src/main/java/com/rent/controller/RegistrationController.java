@@ -67,7 +67,7 @@ public class RegistrationController {
 		UUID regId = registerDao.getIdByEmail(em);
 		// System.out.println("id:" + regId);
 
-		if (email.equalsIgnoreCase("admin@gmail.com") && password.equalsIgnoreCase("Admin12345678@")) {
+		if (password != null && email.equalsIgnoreCase("admin@gmail.com") && password.equalsIgnoreCase("Admin12345678@")) {
 			
 			request.getSession().setAttribute("login", user.getEmail());
 			//System.out.println("user:"+user.getEmail());

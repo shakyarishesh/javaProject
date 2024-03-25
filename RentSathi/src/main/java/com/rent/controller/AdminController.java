@@ -1,9 +1,11 @@
 package com.rent.controller;
 
+
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rent.dao.BookingDao;
 import com.rent.dao.RegisterDao;
+import com.rent.dao.RegisterDaoImpl;
 import com.rent.dao.RentDao;
 import com.rent.dao.UserDao;
 import com.rent.model.Status;
@@ -33,6 +36,8 @@ public class AdminController {
 	
 	@Autowired
 	RentDao rentDao;
+	
+	private static final Logger logger = Logger.getLogger(AdminController.class);
 
 	@RequestMapping(value = "/index")
 	public String index() {
@@ -48,18 +53,18 @@ public class AdminController {
 		return "redirect:/intro";
 	}
 
-	@RequestMapping(path = "/listings", method = RequestMethod.GET)
-	public String listings(HttpServletRequest request, Model model) {
+	@RequestMapping(path = "/bookinglistings", method = RequestMethod.GET)
+	public String bookingListings(HttpServletRequest request, Model model) {
 		if (request.getSession().getAttribute("login") != null) {
-			model.addAttribute("listings", bookingDao.getAllBookings());
-			return "admin/listings";
+			model.addAttribute("listings", bookingDao.getAllBookingsBooked());
+			return "admin/bookinglistings";
 		}
 		return "redirect:/intro";
 
 	}
 	
-	@RequestMapping(path = "/listings/{rent_id}/{status}", method = RequestMethod.POST)
-	public String listingsPost(@PathVariable("rent_id") UUID rentId, 
+	@RequestMapping(path = "/bookinglistings/{rent_id}/{status}", method = RequestMethod.POST)
+	public String bookingListingsPost(@PathVariable("rent_id") UUID rentId, 
             @PathVariable("status") String status,HttpServletRequest request, Model model) {
 		if (request.getSession().getAttribute("login") != null) {
 			
@@ -67,7 +72,7 @@ public class AdminController {
 		
 			rentDao.changestatus(rentId, statuss);
 			
-			return "redirect:/admin/listings";
+			return "redirect:/admin/bookinglistings";
 		}
 		return "redirect:/intro";
 
@@ -81,6 +86,29 @@ public class AdminController {
 		// registerDao.deteleUserReg(regId);
 		redirectAttributes.addFlashAttribute("message", "User deleted successfully");
 		return "redirect:/admin/users";
+	}
+	
+	@RequestMapping(path = "/rentlistings", method = RequestMethod.GET)
+	public String Rentlistings(HttpServletRequest request, Model model) {
+		if (request.getSession().getAttribute("login") != null) {
+			model.addAttribute("listings", rentDao.getAllRent());
+			return "admin/rentListings";
+		}
+		return "redirect:/intro";
+
+	}
+	
+	@RequestMapping(path = "/deleterent/{rent_id}", method = RequestMethod.GET)
+	public String deleteRent(@PathVariable("rent_id") UUID rent_id, RedirectAttributes redirectAttributes, HttpServletRequest request) {
+		
+		String email = (String) request.getSession().getAttribute("login");
+
+		rentDao.deleteRent(rent_id);
+		//System.out.println("rent id:"+ rent_id);
+		logger.info("deleted by"+email);
+		
+		redirectAttributes.addFlashAttribute("message", "User deleted successfully");
+		return "redirect:/admin/rentlistings";
 	}
 
 }

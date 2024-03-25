@@ -100,7 +100,7 @@ public class BookingDaoImpl implements BookingDao {
 	}
 
 	@Override
-	public List<AdminBookingTable> getAllBookings() {
+	public List<AdminBookingTable> getAllBookingsBooked() {
 		EntityManager em = emf.createEntityManager();
 		JPAQueryFactory query = new JPAQueryFactory(em);
 		
