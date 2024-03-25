@@ -45,14 +45,14 @@ String login = (String) session.getAttribute("login");
 			<%
 			}
 			%>
-			<%
+			<%-- <%
 			if (login != null && login.equalsIgnoreCase("admin@gmail.com")) {
-			%>
+			%> --%>
 			<a href="${pageContext.request.contextPath}/rent/upload"
 				class="upload">Upload</a>
-			<%
+			<%-- <%
 			}
-			%>
+			%> --%>
 			<%
 			if (login != null && login.equalsIgnoreCase("admin@gmail.com")) {
 			%>

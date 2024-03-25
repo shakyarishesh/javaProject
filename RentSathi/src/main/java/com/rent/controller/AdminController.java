@@ -1,10 +1,8 @@
 package com.rent.controller;
 
-
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +14,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rent.dao.BookingDao;
 import com.rent.dao.RegisterDao;
-import com.rent.dao.RegisterDaoImpl;
 import com.rent.dao.RentDao;
 import com.rent.dao.UserDao;
 import com.rent.model.Status;
+import com.rent.util.EmailService;
 
 @Controller
 @RequestMapping("/admin")
@@ -30,13 +28,16 @@ public class AdminController {
 
 	@Autowired
 	RegisterDao registerDao;
-	
+
 	@Autowired
 	BookingDao bookingDao;
-	
+
 	@Autowired
 	RentDao rentDao;
 	
+	@Autowired
+	EmailService emailService;
+
 	private static final Logger logger = Logger.getLogger(AdminController.class);
 
 	@RequestMapping(value = "/index")
@@ -62,16 +63,28 @@ public class AdminController {
 		return "redirect:/intro";
 
 	}
-	
+
 	@RequestMapping(path = "/bookinglistings/{rent_id}/{status}", method = RequestMethod.POST)
-	public String bookingListingsPost(@PathVariable("rent_id") UUID rentId, 
-            @PathVariable("status") String status,HttpServletRequest request, Model model) {
+	public String bookingListingsPost(@PathVariable("rent_id") UUID rentId, @PathVariable("status") String status,
+			HttpServletRequest request, Model model) {
 		if (request.getSession().getAttribute("login") != null) {
-			
-			Status statuss =  Status.valueOf(status);
-		
+
+			Status statuss = Status.valueOf(status);
 			rentDao.changestatus(rentId, statuss);
-			
+			if (rentDao.changestatus(rentId, statuss)) {
+				String email = (String) request.getSession().getAttribute("login");
+				
+				/*if(status.equalsIgnoreCase("approved"))
+				{
+					String body = "Your booking is approved. please check youbooking listings in profile and proceed to payment.";
+					 emailService.sendEmail(email, "Test Subject", "This is a test email body.", email, host, username, password);
+				}else if (status.equalsIgnoreCase("rejected")) {
+					String body = "Your booking is rejected. Sorry!!";
+					 emailService.sendEmail(to, "Test Subject", "This is a test email body.", from, host, username, password);
+				}*/
+				
+			}
+
 			return "redirect:/admin/bookinglistings";
 		}
 		return "redirect:/intro";
@@ -87,7 +100,7 @@ public class AdminController {
 		redirectAttributes.addFlashAttribute("message", "User deleted successfully");
 		return "redirect:/admin/users";
 	}
-	
+
 	@RequestMapping(path = "/rentlistings", method = RequestMethod.GET)
 	public String Rentlistings(HttpServletRequest request, Model model) {
 		if (request.getSession().getAttribute("login") != null) {
@@ -97,16 +110,17 @@ public class AdminController {
 		return "redirect:/intro";
 
 	}
-	
+
 	@RequestMapping(path = "/deleterent/{rent_id}", method = RequestMethod.GET)
-	public String deleteRent(@PathVariable("rent_id") UUID rent_id, RedirectAttributes redirectAttributes, HttpServletRequest request) {
-		
+	public String deleteRent(@PathVariable("rent_id") UUID rent_id, RedirectAttributes redirectAttributes,
+			HttpServletRequest request) {
+
 		String email = (String) request.getSession().getAttribute("login");
 
 		rentDao.deleteRent(rent_id);
-		//System.out.println("rent id:"+ rent_id);
-		logger.info("deleted by"+email);
-		
+		// System.out.println("rent id:"+ rent_id);
+		logger.info("deleted by" + email);
+
 		redirectAttributes.addFlashAttribute("message", "User deleted successfully");
 		return "redirect:/admin/rentlistings";
 	}
