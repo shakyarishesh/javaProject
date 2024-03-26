@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Booking Information</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/profilestyle.css">
 <link
@@ -29,6 +29,7 @@
 					<th scope="col">Date</th>
 					<th scope="col">Status</th>
 					<th scope="col">Description</th>
+					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody id="booking-table-body">
@@ -44,12 +45,17 @@
 						<td scope="col">${b.created_at }</td>
 						<td scope="col">${b.status }</td>
 						<td scope="col">${b.description }</td>
+						<td scope="col"><c:if test="${status == 'approved'}">
+								<a href="${pageContext.request.contextPath }/book/payment"><button
+										class="btn-primary">Payment</button></a>
+							</c:if></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div class="container">
-		<a href ="${pageContext.request.contextPath }/intro"><button style="text-decoration: none;">Home</button></a>
+			<a href="${pageContext.request.contextPath }/intro"><button
+					style="text-decoration: none;">Home</button></a>
 		</div>
 	</div>
 	<script

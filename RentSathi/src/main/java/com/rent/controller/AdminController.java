@@ -1,8 +1,11 @@
 package com.rent.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,9 @@ import com.rent.dao.RegisterDao;
 import com.rent.dao.RentDao;
 import com.rent.dao.UserDao;
 import com.rent.model.Status;
+import com.rent.sprite.AdminBookingTable;
+import com.rent.sprite.RentList;
+import com.rent.sprite.UserTable;
 import com.rent.util.EmailService;
 
 @Controller
@@ -34,14 +40,54 @@ public class AdminController {
 
 	@Autowired
 	RentDao rentDao;
-	
+
 	@Autowired
 	EmailService emailService;
 
 	private static final Logger logger = Logger.getLogger(AdminController.class);
 
 	@RequestMapping(value = "/index")
-	public String index() {
+	public String index(HttpServletRequest request, Model model) {
+		if (request.getSession().getAttribute("login") != null) {
+			List<RentList> rentListings = rentDao.getAllRent();
+			int numberOfRentListings = rentListings.size();
+			
+			// Initialize counts for each rent type
+			int roomCount = 0;
+			int flatCount = 0;
+			int houseCount = 0;
+
+			// Iterate over the rent listings to count occurrences of each type
+			for (RentList rent : rentListings) {
+			    String rentType = rent.getRentType();
+			    if ("room".equalsIgnoreCase(rentType)) {
+			        roomCount++;
+			    } else if ("flat".equalsIgnoreCase(rentType)) {
+			        flatCount++;
+			    } else if ("house".equalsIgnoreCase(rentType)) {
+			        houseCount++;
+			    }
+			}
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("numberOfRentListings", numberOfRentListings); // Set attribute in session
+
+			session.setAttribute("rooms", roomCount);
+			session.setAttribute("house", flatCount);
+			session.setAttribute("flats", houseCount);
+			
+			List<AdminBookingTable> bookingListings = bookingDao.getAllBookingsBooked();
+			int numberOfListings = bookingListings.size();
+
+			session = request.getSession();
+			session.setAttribute("numberOfListings", numberOfListings); // Set attribute in session
+
+			List<UserTable> userList = userDao.getAllUser();
+			int numberOfUsers = userList.size();
+			model.addAttribute("users", userList);
+			session = request.getSession(); // Get HttpSession instance
+			session.setAttribute("numberOfUsers", numberOfUsers); // Set attribute in session
+		}
 		return "admin/index";
 	}
 
@@ -71,19 +117,21 @@ public class AdminController {
 
 			Status statuss = Status.valueOf(status);
 			rentDao.changestatus(rentId, statuss);
-			if (rentDao.changestatus(rentId, statuss)) {
-				String email = (String) request.getSession().getAttribute("login");
-				
-				/*if(status.equalsIgnoreCase("approved"))
-				{
-					String body = "Your booking is approved. please check youbooking listings in profile and proceed to payment.";
-					 emailService.sendEmail(email, "Test Subject", "This is a test email body.", email, host, username, password);
-				}else if (status.equalsIgnoreCase("rejected")) {
-					String body = "Your booking is rejected. Sorry!!";
-					 emailService.sendEmail(to, "Test Subject", "This is a test email body.", from, host, username, password);
-				}*/
-				
-			}
+			/*
+			 * if (rentDao.changestatus(rentId, statuss)) { String email = (String)
+			 * request.getSession().getAttribute("login");
+			 * 
+			 * if(status.equalsIgnoreCase("approved")) { String body =
+			 * "Your booking is approved. please check youbooking listings in profile and proceed to payment."
+			 * ; emailService.sendEmail(email, "Test Subject", "This is a test email body.",
+			 * email, host, username, password); }else if
+			 * (status.equalsIgnoreCase("rejected")) { String body =
+			 * "Your booking is rejected. Sorry!!"; emailService.sendEmail(to,
+			 * "Test Subject", "This is a test email body.", from, host, username,
+			 * password); }
+			 * 
+			 * }
+			 */
 
 			return "redirect:/admin/bookinglistings";
 		}

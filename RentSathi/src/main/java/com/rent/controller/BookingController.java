@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.rent.dao.BookingDao;
 import com.rent.dao.RentDao;
 import com.rent.dao.UserDao;
+import com.rent.model.Status;
 import com.rent.service.BookingService;
 import com.rent.sprite.BookingTable;
 
@@ -75,12 +76,25 @@ public class BookingController {
 //			System.out.println(email);
 			Integer user_id = userDao.getExistingUserId(user_email);
 			model.addAttribute("bookingdetails", bookingDao.getRentDetailsByBooking(user_id));
+			
+			String status =String.valueOf(bookingDao.getStatus(user_id)) ;
+			model.addAttribute("status", status);
 			return "bookingdetails";
 		}else
 		{
 			return "redirect:/login";
 		}
 		
+	}
+	
+	@RequestMapping(value = "/payment")
+	public String payment(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute BookingTable bookingTable) {
+		if(request.getSession().getAttribute("login")!=null)
+		{
+			return "payment";
+		}
+		return "redirect:/intro";
 	}
 	
 }

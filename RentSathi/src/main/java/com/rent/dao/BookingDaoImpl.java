@@ -18,6 +18,7 @@ import com.rent.model.QBooking;
 import com.rent.model.QRent;
 import com.rent.model.QUser;
 import com.rent.model.Rent;
+import com.rent.model.Status;
 import com.rent.sprite.AdminBookingTable;
 import com.rent.sprite.BookingTable;
 import com.rent.sprite.RentList;
@@ -49,26 +50,24 @@ public class BookingDaoImpl implements BookingDao {
 	}
 
 	@Override
-	public List<RentList> getRentDetailsByBooking(Integer user_id){
+	public List<RentList> getRentDetailsByBooking(Integer user_id) {
 		EntityManager em = emf.createEntityManager();
 		this.query = new JPAQueryFactory(em);
 		QRent qRent = QRent.rent;
-		QBooking qBooking =QBooking.booking;
-		//QUser qUser = QUser.user;
-	
-		List<RentList> rentlist = new ArrayList<RentList>() ;
+		QBooking qBooking = QBooking.booking;
+		// QUser qUser = QUser.user;
+
+		List<RentList> rentlist = new ArrayList<RentList>();
 
 		try {
-			List<Tuple> r = query.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.PropertySpecification
-					,qRent.imagePath, qRent.imageName, qRent.rentType, qRent.location,qRent.description
-					,qRent.status)
-					.from(qRent)
-					.leftJoin(qBooking).on(qBooking.rent.id.eq(qRent.id))
-					.where(qBooking.user.id.eq(user_id))
-					.fetch();
-			
-			for (Tuple r1 : r)
-			{
+			List<Tuple> r = query
+					.select(qRent.id, qRent.createdAt, qRent.title, qRent.price, qRent.PropertySpecification,
+							qRent.imagePath, qRent.imageName, qRent.rentType, qRent.location, qRent.description,
+							qRent.status)
+					.from(qRent).leftJoin(qBooking).on(qBooking.rent.id.eq(qRent.id))
+					.where(qBooking.user.id.eq(user_id)).fetch();
+
+			for (Tuple r1 : r) {
 				RentList rr = new RentList();
 				rr.setPropertySpecification(r1.get(qRent.PropertySpecification));
 				rr.setTitle(r1.get(qRent.title));
@@ -79,20 +78,19 @@ public class BookingDaoImpl implements BookingDao {
 				rr.setRent_id(r1.get(qRent.id));
 				rr.setDescription(r1.get(qRent.description));
 				rr.setStatus(r1.get(qRent.status));
-			
-				//converting image byte[] datatype into base64 String
+
+				// converting image byte[] datatype into base64 String
 				String base64image = Base64.getEncoder().encodeToString(r1.get(qRent.imagePath));
 				rr.setImgpath(base64image);
 				rr.setImgname(r1.get(qRent.imageName));
-			
-				
+
 				rentlist.add(rr);
-				
+
 			}
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
-		}finally {
+		} finally {
 			em.close();
 		}
 
@@ -103,49 +101,67 @@ public class BookingDaoImpl implements BookingDao {
 	public List<AdminBookingTable> getAllBookingsBooked() {
 		EntityManager em = emf.createEntityManager();
 		JPAQueryFactory query = new JPAQueryFactory(em);
-		
-		
+
 		QBooking qBooking = QBooking.booking;
 		QRent qRent = QRent.rent;
-		
+
 		List<AdminBookingTable> bookings = new ArrayList<>();
-		
+
 		try {
-		List<Tuple> booking = query.select(qBooking.id,qBooking.name,qBooking.email
-				,qBooking.mobileno,qBooking.rentType,qBooking.comment,qBooking.createdAt
-				,qRent.title,qRent.id,qBooking.rent.id,qRent.location,qRent.price,qRent.status)
-				.from(qBooking)
-				.leftJoin(qRent).on(qBooking.rent.id.eq(qRent.id))
-				.fetch();
-		
-		for(Tuple b : booking)
-		{
-			AdminBookingTable bb = new AdminBookingTable();
-			bb.setBookingId(b.get(qBooking.id));
-			bb.setName(b.get(qBooking.name));
-			bb.setEmail(b.get(qBooking.email));
-			bb.setMobileno(b.get(qBooking.mobileno));
-			bb.setRentType(b.get(qBooking.rentType));
-			bb.setComment(b.get(qBooking.comment));
-			bb.setCreatedAt(b.get(qBooking.createdAt));
-			bb.setTitle(b.get(qRent.title));
-			bb.setRentId(b.get(qBooking.rent.id));
-			bb.setLocation(b.get(qRent.location));
-			bb.setPrice(b.get(qRent.price));
-			bb.setStatus(b.get(qRent.status));
-			
-			bookings.add(bb);
-			
-		}
-		
-		}catch(Exception e)
-		{
+			List<Tuple> booking = query
+					.select(qBooking.id, qBooking.name, qBooking.email, qBooking.mobileno, qBooking.rentType,
+							qBooking.comment, qBooking.createdAt, qRent.title, qRent.id, qBooking.rent.id,
+							qRent.location, qRent.price, qRent.status)
+					.from(qBooking).leftJoin(qRent).on(qBooking.rent.id.eq(qRent.id)).fetch();
+
+			for (Tuple b : booking) {
+				AdminBookingTable bb = new AdminBookingTable();
+				bb.setBookingId(b.get(qBooking.id));
+				bb.setName(b.get(qBooking.name));
+				bb.setEmail(b.get(qBooking.email));
+				bb.setMobileno(b.get(qBooking.mobileno));
+				bb.setRentType(b.get(qBooking.rentType));
+				bb.setComment(b.get(qBooking.comment));
+				bb.setCreatedAt(b.get(qBooking.createdAt));
+				bb.setTitle(b.get(qRent.title));
+				bb.setRentId(b.get(qBooking.rent.id));
+				bb.setLocation(b.get(qRent.location));
+				bb.setPrice(b.get(qRent.price));
+				bb.setStatus(b.get(qRent.status));
+
+				bookings.add(bb);
+
+			}
+
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			em.close();
 		}
-		
+
 		return bookings;
+	}
+
+	@Override
+	public Status getStatus(Integer user_id) {
+		EntityManager em = emf.createEntityManager();
+		this.query = new JPAQueryFactory(em);
+		QRent qRent = QRent.rent;
+		QBooking qBooking = QBooking.booking;
+		// QUser qUser = QUser.user;
+
+		Status status = null;
+
+		try {
+			status = query.select(qRent.status).from(qRent).leftJoin(qBooking).on(qBooking.rent.id.eq(qRent.id))
+					.where(qBooking.user.id.eq(user_id)).fetchOne();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			em.close();
+		}
+
+		return status;
 	}
 
 }

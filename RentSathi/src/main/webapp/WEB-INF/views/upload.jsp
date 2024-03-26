@@ -13,15 +13,16 @@ String login = (String) session.getAttribute("login");
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/upload.css">
 </head>
-<body style="background-image: url(${pageContext.request.contextPath}/resources/Images/Background1.png);">
+<body
+	style="background-image: url(${pageContext.request.contextPath}/resources/Images/Background1.png);">
 	<div align="center" class="container">
 		<h3>Image Upload</h3>
 		<form action="${pageContext.request.contextPath}/upload/add"
 			enctype="multipart/form-data" method=post>
 			<label for="Image" class="section">Image: </label> <input type="file"
 				name="img" class="form-control" /> <label for="rentType"
-				class="section">Rent Type:</label> <select class="rentType" id="rentType"
-				name="rentType" onchange="changeRentType()">
+				class="section">Rent Type:</label> <select class="rentType"
+				id="rentType" name="rentType" onchange="changeRentType()">
 				<option value="house">house</option>
 				<option value="flat">flat</option>
 				<option value="room">room</option>
@@ -29,8 +30,85 @@ String login = (String) session.getAttribute("login");
 			<!-- <option value="Room with Kitchen">Room with Kitche</option>
           <option value="1BHK">1BHK</option>
           <option value="2BHK">2BHK</option> -->
-			<label for="Location" class="section">Location:</label> <input
-				type="text" id="location" name="location">
+			<label for="Location" class="section">Location:</label><br/> <select class="rentType"
+				id="location" name="location" required>
+				<option disabled selected>Select your district</option>
+				<option value="Achham">Achham</option>
+				<option value="Arghakhanchi">Arghakhanchi</option>
+				<option value="Baglung">Baglung</option>
+				<option value="Baitadi">Baitadi</option>
+				<option value="Bajhang">Bajhang</option>
+				<option value="Bajura">Bajura</option>
+				<option value="Banke">Banke</option>
+				<option value="Bara">Bara</option>
+				<option value="Bardiya">Bardiya</option>
+				<option value="Bhaktapur">Bhaktapur</option>
+				<option value="Bhojpur">Bhojpur</option>
+				<option value="Chitwan">Chitwan</option>
+				<option value="Dadeldhura">Dadeldhura</option>
+				<option value="Dailekh">Dailekh</option>
+				<option value="Dang">Dang</option>
+				<option value="Darchula">Darchula</option>
+				<option value="Dhading">Dhading</option>
+				<option value="Dhankuta">Dhankuta</option>
+				<option value="Dhanusa">Dhanusa</option>
+				<option value="Dholkha">Dholkha</option>
+				<option value="Dolpa">Dolpa</option>
+				<option value="Doti">Doti</option>
+				<option value="Gorkha">Gorkha</option>
+				<option value="Gulmi">Gulmi</option>
+				<option value="Humla">Humla</option>
+				<option value="Illam">Illam</option>
+				<option value="Jajarkot">Jajarkot</option>
+				<option value="Jhapa">Jhapa</option>
+				<option value="Jumla">Jumla</option>
+				<option value="Kailali">Kailali</option>
+				<option value="Kalikot">Kalikot</option>
+				<option value="Kanchanpur">Kanchanpur</option>
+				<option value="Kapilvastu">Kapilvastu</option>
+				<option value="Kaski">Kaski</option>
+				<option value="Kathmandu">Kathmandu</option>
+				<option value="Kavrepalanchok">Kavrepalanchok</option>
+				<option value="Khotang">Khotang</option>
+				<option value="Lalitpur">Lalitpur</option>
+				<option value="Lamjung">Lamjung</option>
+				<option value="Mahottari">Mahottari</option>
+				<option value="Makwanpur">Makwanpur</option>
+				<option value="Manang">Manang</option>
+				<option value="Morang">Morang</option>
+				<option value="Mugu">Mugu</option>
+				<option value="Mustang">Mustang</option>
+				<option value="Myagdi">Myagdi</option>
+				<option value="Nawalparasi">Nawalparasi</option>
+				<option value="Nuwakot">Nuwakot</option>
+				<option value="Okhaldhunga">Okhaldhunga</option>
+				<option value="Palpa">Palpa</option>
+				<option value="Panchthar">Panchthar</option>
+				<option value="Parbat">Parbat</option>
+				<option value="Parsa">Parsa</option>
+				<option value="Pyuthan">Pyuthan</option>
+				<option value="Ramechhap">Ramechhap</option>
+				<option value="Rasuwa">Rasuwa</option>
+				<option value="Rautahat">Rautahat</option>
+				<option value="Rolpa">Rolpa</option>
+				<option value="Rukum">Rukum</option>
+				<option value="Rupandehi">Rupandehi</option>
+				<option value="Salyan">Salyan</option>
+				<option value="Sankhuwasabha">Sankhuwasabha</option>
+				<option value="Saptari">Saptari</option>
+				<option value="Sarlahi">Sarlahi</option>
+				<option value="Sindhuli">Sindhuli</option>
+				<option value="Sindhupalchok">Sindhupalchok</option>
+				<option value="Siraha">Siraha</option>
+				<option value="Solukhumbu">Solukhumbu</option>
+				<option value="Sunsari">Sunsari</option>
+				<option value="Surkhet">Surkhet</option>
+				<option value="Syangja">Syangja</option>
+				<option value="Tanahu">Tanahu</option>
+				<option value="Taplejung">Taplejung</option>
+				<option value="Terhathum">Terhathum</option>
+				<option value="Udayapur">Udayapur</option>
+			</select>
 			<div id="bhkField">
 				<!-- BHK field will be added dynamically here based on selection -->
 			</div>
@@ -57,18 +135,18 @@ String login = (String) session.getAttribute("login");
 
 			if (rentType === "flat") {
 				// If flat is chosen, add BHK options
-			    var bhkLabel = document.createElement("label");
-			    bhkLabel.setAttribute("for", "bhk");
-			    bhkLabel.textContent = "BHK:";
-			    bhkField.appendChild(bhkLabel);
+				var bhkLabel = document.createElement("label");
+				bhkLabel.setAttribute("for", "bhk");
+				bhkLabel.textContent = "BHK:";
+				bhkField.appendChild(bhkLabel);
 
-			    bhkField.appendChild(document.createElement("br"));
+				bhkField.appendChild(document.createElement("br"));
 
-			    var bhkInput = document.createElement("input");
-			    bhkInput.setAttribute("id", "bhk");
-			    bhkInput.setAttribute("name", "PropertySpecification");
-			    bhkInput.setAttribute("type", "text");
-			    bhkField.appendChild(bhkInput);
+				var bhkInput = document.createElement("input");
+				bhkInput.setAttribute("id", "bhk");
+				bhkInput.setAttribute("name", "PropertySpecification");
+				bhkInput.setAttribute("type", "text");
+				bhkField.appendChild(bhkInput);
 			} else if (rentType === "house") {
 				// If house is chosen, add storey label
 				var storeyLabel = document.createElement("label");

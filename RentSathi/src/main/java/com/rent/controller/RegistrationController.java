@@ -90,7 +90,7 @@ public class RegistrationController {
 		}else {
 			
 			model.addAttribute("error", "Email/Password didn't matched");
-			return "intro";
+			return "login";
 		}
 		
 
