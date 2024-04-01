@@ -9,6 +9,13 @@
 <title>About Us</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/aboutus.css">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
 </head>
 <body
 	style="background-image: url('<c:url value="/resources/Images/Background1.png"/>')">
@@ -50,22 +57,22 @@
 					committed to fostering a user-centric approach, prioritizing your
 					needs and creating a seamless experience.</p>
 				<ul>
-					<li><img src="<c:url value="/resources/Images/aaru.jpg"/>" alt="Team Member 1">
+					<li><img src="<c:url value="/resources/Images/aaru.jpg"/>"
+						alt="Team Member 1">
 						<h4>Bandana Limbu</h4>
 						<p>QA/Front-end/</p>
 						<p>Project manager</p>
-						<p>Patan Multiple Campus</p>
-						</li>
-					<li><img src="<c:url value="/resources/Images/rishesh.jpg"/>" alt="Team Member 2">
+						<p>Patan Multiple Campus</p></li>
+					<li><img src="<c:url value="/resources/Images/rishesh.jpg"/>"
+						alt="Team Member 2">
 						<h4>Rishesh Shakya</h4>
 						<p>Back-end Developer</p>
-						<p>Patan Multiple Campus</p>
-						</li>
-					<li><img src="<c:url value="/resources/Images/sanjiv.jpg"/>" alt="Team Member 3">
+						<p>Patan Multiple Campus</p></li>
+					<li><img src="<c:url value="/resources/Images/sanjiv.jpg"/>"
+						alt="Team Member 3">
 						<h4>Sanjiv Dainwal</h4>
 						<p>Front-end Developer</p>
-						<p>Patan Multiple Campus</p>
-						</li>
+						<p>Patan Multiple Campus</p></li>
 				</ul>
 			</div>
 		</section>

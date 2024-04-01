@@ -24,31 +24,30 @@ import com.rent.sprite.BookingTable;
 @Controller
 @RequestMapping("/book")
 public class BookingController {
-	
+
 	@Autowired
 	BookingService bookingService;
-	
+
 	@Autowired
 	RentDao rentDao;
-	
+
 	@Autowired
 	UserDao userDao;
-	
+
 	@Autowired
 	BookingDao bookingDao;
 
 	@RequestMapping("/rentNow/{rent_id}")
-	public String booking(@PathVariable("rent_id") UUID rentId, RedirectAttributes redirectAttributes, Model model,HttpServletRequest request) {
-		if(request.getSession().getAttribute("login")!=null)
-		{
+	public String booking(@PathVariable("rent_id") UUID rentId, RedirectAttributes redirectAttributes, Model model,
+			HttpServletRequest request) {
+		if (request.getSession().getAttribute("login") != null) {
 			model.addAttribute("rentid", rentId);
-			//System.out.println("rent id:" + rentId);
+			// System.out.println("rent id:" + rentId);
 			return "booking";
-		}else
-		{
+		} else {
 			return "redirect:/login";
 		}
-		
+
 	}
 
 	@RequestMapping(path = "/bookAdd", method = RequestMethod.POST)
@@ -60,41 +59,40 @@ public class BookingController {
 		// Convert the rent_id parameter string to a UUID
 		UUID rent_id = UUID.fromString(rentIdParameter);
 		String user_email = (String) request.getSession().getAttribute("login");
-		//System.out.println("logged in as:"+user);
-	
-		
+		// System.out.println("logged in as:"+user);
+
 		bookingService.addBookingDetails(bookingTable, rent_id, user_email);
-		
+
 		return "redirect:/intro";
 	}
-	
+
 	@RequestMapping("/bookingDetails")
-	public String bookingDetails( Model model,HttpServletRequest request) {
-		if(request.getSession().getAttribute("login")!=null)
-		{
+	public String bookingDetails(Model model, HttpServletRequest request) {
+		if (request.getSession().getAttribute("login") != null) {
 			String user_email = (String) request.getSession().getAttribute("login");
-//			System.out.println(email);
+			//System.out.println(user_email);
 			Integer user_id = userDao.getExistingUserId(user_email);
+			//System.out.println("id: "+user_id);
 			model.addAttribute("bookingdetails", bookingDao.getRentDetailsByBooking(user_id));
-			
+
+			//Status status = bookingDao.getStatus(user_id);
 			String status =String.valueOf(bookingDao.getStatus(user_id)) ;
+			//System.out.println("status:" + status);
 			model.addAttribute("status", status);
 			return "bookingdetails";
-		}else
-		{
+		} else {
 			return "redirect:/login";
 		}
-		
+
 	}
-	
+
 	@RequestMapping(value = "/payment")
 	public String payment(HttpServletRequest request, HttpServletResponse response,
 			@ModelAttribute BookingTable bookingTable) {
-		if(request.getSession().getAttribute("login")!=null)
-		{
+		if (request.getSession().getAttribute("login") != null) {
 			return "payment";
 		}
 		return "redirect:/intro";
 	}
-	
+
 }

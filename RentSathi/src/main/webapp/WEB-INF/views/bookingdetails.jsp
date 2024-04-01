@@ -18,7 +18,7 @@
 	style="background-image: url(${pageContext.request.contextPath}/resources/Images/Background1.png);">
 	<div class="profile-info">
 		<h2>Booking Information</h2>
-
+		
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -53,11 +53,15 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<div class="container">
-			<a href="${pageContext.request.contextPath }/intro"><button
-					style="text-decoration: none;">Home</button></a>
-		</div>
+
 	</div>
+	<footer>
+		<div class="container">
+					<a href="${pageContext.request.contextPath}/registration/profile"
+						style="text-decoration: none; color: inherit;"><button
+							style="font-size: 20px; background-color: #ff6600; color: white; border: none; padding: 10px 20px; ">Back</button></a>
+				</div>
+	</footer>
 	<script
 		src="${pageContext.request.contextPath}/resources/js/profscript.js"></script>
 </body>

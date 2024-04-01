@@ -63,19 +63,24 @@
 					</p>
 				</div>
 
-				<div class="profile-settings">
+				<!-- <div class="profile-settings">
 					<h3>Account Settings</h3>
 					<ul>
 						<li><a href="#">Edit Profile</a></li>
 						<li><a href="/changepass.html">Change password</a></li>
 						<li><a href="#">Delete Account</a></li>
 					</ul>
-				</div>
+				</div> -->
 				<div class="profile-info">
 					<a href="${pageContext.request.contextPath}/book/bookingDetails"
 						style="text-decoration: none;">
 						<button type="button">Your Bookings</button>
 					</a>
+				</div>
+				<div class="container">
+					<a href="${pageContext.request.contextPath}/intro"
+						style="text-decoration: none; color: inherit;"><button
+							style="font-size: 20px; background-color: #ff6600; color: white; border: none; padding: 10px 20px;">Back</button></a>
 				</div>
 
 			</section>
