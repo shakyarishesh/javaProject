@@ -69,8 +69,22 @@ public class RegistrationController {
 
 		if (password != null && email.equalsIgnoreCase("admin@gmail.com") && password.equalsIgnoreCase("Admin12345678@")) {
 			
-			request.getSession().setAttribute("login", user.getEmail());
+			//this is original code but i doesnot add the admin details into the user table
+			//request.getSession().setAttribute("login", user.getEmail());
 			//System.out.println("user:"+user.getEmail());
+			//return "redirect:/intro";
+			
+			
+			request.getSession().setAttribute("login", user.getEmail());
+			// request.getSession().setAttribute("userpw", user.getPassword());
+			User us = userDao.getExistingUser(user.getEmail());
+			// here if there is already an user then it redirects to intro exle it add the
+			// registered user in to user table.
+			if (us != null) {
+				return "redirect:/intro";
+			} else {
+				userService.setUser(user, regId);
+			}
 			return "redirect:/intro";
 			
 		} else if (email != null && password != null) {

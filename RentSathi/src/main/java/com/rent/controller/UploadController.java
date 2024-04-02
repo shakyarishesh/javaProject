@@ -51,13 +51,17 @@ public class UploadController {
 			//System.out.println(rentTable.getPropertySpecification());
 			
 			String userEmail = (String) request.getSession().getAttribute("login");
-			//System.out.println("userEmail: "+userEmail);
+			System.out.println("userEmail: "+userEmail);
 			
-			Integer userId = userDao.getExistingUser(userEmail).getId();
-			//System.out.println("user id:"+userId);
+			if( userDao.getExistingUser(userEmail).getId()!=null)
+			{
+				Integer userId = userDao.getExistingUser(userEmail).getId();
+				//System.out.println("user id:"+userId);
+				
+				//System.out.println("---------------------------------");
+				rentService.setUpload(rentTable, userId, image.getOriginalFilename(), img_byte);
+			}
 			
-			//System.out.println("---------------------------------");
-			rentService.setUpload(rentTable, userId, image.getOriginalFilename(), img_byte);
 			
 			
 			//gives path of the image folder after the project has been run, not the one on the project.
