@@ -80,7 +80,8 @@ public class HomeController {
 	private static int partition(List<RentList> arr, int low, int high, String userLocation) {
 	    int i = low - 1;
 	    for (int j = low; j < high; j++) {
-	        if (arr.get(j).getLocation().equals(userLocation)) {
+	        String location = arr.get(j).getLocation();
+	        if (location != null && location.equals(userLocation)) {
 	            i++;
 	            swap(arr, i, j);
 	        }
@@ -89,6 +90,7 @@ public class HomeController {
 	    swap(arr, i + 1, high);
 	    return i + 1;
 	}
+
 
 
 	private static void swap(List<RentList> arr, int i, int j) {

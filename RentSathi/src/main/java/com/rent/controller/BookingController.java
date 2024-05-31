@@ -42,7 +42,7 @@ public class BookingController {
 			HttpServletRequest request) {
 		if (request.getSession().getAttribute("login") != null) {
 			model.addAttribute("rentid", rentId);
-			// System.out.println("rent id:" + rentId);
+			System.out.println("rent id:" + rentId);
 			return "booking";
 		} else {
 			return "redirect:/login";
@@ -58,6 +58,7 @@ public class BookingController {
 
 		// Convert the rent_id parameter string to a UUID
 		UUID rent_id = UUID.fromString(rentIdParameter);
+		System.out.println("rent idpost: "+ rent_id);
 		String user_email = (String) request.getSession().getAttribute("login");
 		// System.out.println("logged in as:"+user);
 

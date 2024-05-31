@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import com.rent.model.Rent;
 import com.rent.model.Status;
+import com.rent.sprite.DescriptionResult;
 import com.rent.sprite.RentList;
 
 public interface RentDao {
@@ -22,4 +23,8 @@ public interface RentDao {
 	List<RentList> getAllRent();
 	
 	Boolean deleteRent(UUID rent_id);
+	
+	List<String> getDescription();
+	
+	
 }

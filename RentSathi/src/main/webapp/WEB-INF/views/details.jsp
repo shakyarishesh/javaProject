@@ -33,6 +33,7 @@
 					<h2>
 						${rentDetail.price }<span>/per Month</span>
 					</h2>
+					<p>${rentDetail.description }</p>
 					<p>Location: ${rentDetail.location }</p>
 					<a
 						href="${pageContext.request.contextPath}/book/rentNow/${rentDetail.rent_id}"

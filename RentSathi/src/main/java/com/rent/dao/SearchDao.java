@@ -2,6 +2,7 @@ package com.rent.dao;
 
 import java.util.List;
 
+import com.rent.sprite.DescriptionResult;
 import com.rent.sprite.RentList;
 
 public interface SearchDao {
@@ -19,5 +20,9 @@ public interface SearchDao {
 	List<RentList> getRentDetailByDistrict(String district, String rentType);
 	
 	//List<RentList> getRentDetailDis(String district);
+	
+	List<RentList> getRentDetailByUserPref(List<DescriptionResult> userPref);
+	
+	List<RentList> getRentDetailByUserPrefDisRT(List<DescriptionResult> userPref, String district, String rentType);
 
 }

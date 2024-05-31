@@ -62,17 +62,23 @@
 						<h4>Bandana Limbu</h4>
 						<p>QA/Front-end/</p>
 						<p>Project manager</p>
-						<p>Patan Multiple Campus</p></li>
+						<p>Roll no: BIT 05/076</p>
+						<p>Patan Multiple Campus</p>
+						</li>
 					<li><img src="<c:url value="/resources/Images/rishesh.jpg"/>"
 						alt="Team Member 2">
 						<h4>Rishesh Shakya</h4>
 						<p>Back-end Developer</p>
-						<p>Patan Multiple Campus</p></li>
+						<p>Roll no: BIT 26/076</p>
+						<p>Patan Multiple Campus</p>
+						</li>
 					<li><img src="<c:url value="/resources/Images/sanjiv.jpg"/>"
 						alt="Team Member 3">
 						<h4>Sanjiv Dainwal</h4>
 						<p>Front-end Developer</p>
-						<p>Patan Multiple Campus</p></li>
+						<p>Roll no: BIT 30/076</p>
+						<p>Patan Multiple Campus</p>
+						</li>
 				</ul>
 			</div>
 		</section>

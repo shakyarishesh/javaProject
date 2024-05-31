@@ -42,25 +42,7 @@ public class SearchController {
 		return "flatroomhouse";
 	}
 
-	@RequestMapping(path = "/searchByDistrict", method = RequestMethod.GET)
-	public String SearchByDistrict(HttpServletRequest request, HttpServletResponse response, Model model) {
-		String district = request.getParameter("district");
-		//System.out.println("Search by district: " + district);
-		
-		String rentType = request.getParameter("rentType");
-		//System.out.println("Search by rentType: " + rentType);
-
-		//System.out.println(searchDao.getRentDetailByDistrict(district, rentType));
-		
-		if(!searchDao.getRentDetailByDistrict(district, rentType).isEmpty())
-		{
-			model.addAttribute("rentDetails", searchDao.getRentDetailByDistrict(district, rentType));
-		}else
-		{
-			model.addAttribute("error", "No Data available");
-		}
-		return "intro";
-	}
+	
 	
 	
 }

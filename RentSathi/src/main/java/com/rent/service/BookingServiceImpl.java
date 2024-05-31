@@ -2,6 +2,7 @@ package com.rent.service;
 
 import java.util.UUID;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,7 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public Boolean addBookingDetails(BookingTable bookingTable, UUID rent_id, String user_email) {
 		Rent rent = rentDao.getRentId(rent_id);
+		System.out.println("rent servicce "+ rent);
 		String rent_type = rentDao.getRentType(rent_id);
 		User user_id = userDao.getExistingUser(user_email);
 		
