@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #daa4a4;
+}
+
+.main {
+    padding: 20px;
+}
+
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    gap: 20px; /* Gap between columns */
+}
+
+.profile-info,
+.profile-settings {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border: 1px solid var(--text-color);
+}
+
+.profile-info h2,
+.profile-settings h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.profile-info p,
+.profile-settings ul {
+    color: #352a2a;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    
+}
+
+.profile-settings {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-settings h3 {
+    margin-bottom: 10px;
+}
+
+.profile-settings ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.profile-settings ul li {
+    margin-bottom: 5px;
+}
+
+.profile-settings ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.profile-settings ul li a:hover {
+    text-decoration: underline;
+    color: #666;
+}
+ 
